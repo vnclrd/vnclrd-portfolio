@@ -465,7 +465,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduces the core concepts of UX design and the design process, emphasizing user-centered design and accessibility. It prepares learners for entry-level UX design roles by covering topics like user research, wireframing, prototyping, and testing.',
       credentialUrl: 'https://coursera.org/share/397318c8ef04f3d78f79e2dc79d417cb',
-      imageUrl: 'public/images/cert-1.png'
+      imageUrl: 'images/cert-1.png'
     },
     {
       id: 'cert-2',
@@ -474,7 +474,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course designed to provide a comprehensive overview of computer networking. It covers fundamental concepts of modern networking technologies and protocols, including cloud computing and practical applications for IT professionals.',
       credentialUrl: 'https://coursera.org/share/3de7f88ecd9e24321cae729a45f5c8ff',
-      imageUrl: 'public/images/cert-2.png'
+      imageUrl: 'images/cert-2.png'
     },
     {
       id: 'cert-3',
@@ -483,7 +483,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux. ',
       credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
-      imageUrl: 'public/images/cert-3.png'
+      imageUrl: 'images/cert-3.png'
     },
     {
       id: 'cert-4',
@@ -492,7 +492,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Encompass the technical maintenance, refinement, and smooth running of computer systems and networks within an organization, ensuring they function effectively and safely. This includes managing servers, cloud resources, user information, and productivity, as well as disaster recovery planning.',
       credentialUrl: 'https://coursera.org/share/7a625b42aac4a37b7ea962fa41b18823',
-      imageUrl: 'public/images/cert-4.png'
+      imageUrl: 'images/cert-4.png'
     },
     {
       id: 'cert-5',
@@ -501,7 +501,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       credentialUrl: 'https://coursera.org/share/21a31c27ddac9b76446edd246ad43e4a',
-      imageUrl: 'public/images/cert-5.png'
+      imageUrl: 'images/cert-5.png'
     },
     {
       id: 'cert-6',
@@ -509,7 +509,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
-      imageUrl: 'public/images/cert-6.png'
+      imageUrl: 'images/cert-6.png'
     },
     {
       id: 'cert-7',
@@ -517,7 +517,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
-      imageUrl: 'public/images/cert-7.png'
+      imageUrl: 'images/cert-7.png'
     },
     {
       id: 'cert-8',
@@ -525,7 +525,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
-      imageUrl: 'public/images/cert-8.png'
+      imageUrl: 'images/cert-8.png'
     },
     {
       id: 'cert-9',
@@ -533,7 +533,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This beginner-level course is for technical learners in the development and operations domains who are interested in learning the basic concepts of DevOps on AWS. Using discussions, interactive content, and demonstrations, you will learn about culture, practices, and tools used in a DevOps environment. ',
-      imageUrl: 'public/images/cert-9.png'
+      imageUrl: 'images/cert-9.png'
     },
   ];
 
