@@ -444,97 +444,84 @@ const App = () => {
   const certifications = [
     {
       id: 'cert-1',
-      name: 'Certification 1',
+      name: 'Foundations of User Experience (UX) Design',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/4285F4/FFFFFF?text=Google',
-      credentialUrl: '#',
+      description: 'Introduces the core concepts of UX design and the design process, emphasizing user-centered design and accessibility. It prepares learners for entry-level UX design roles by covering topics like user research, wireframing, prototyping, and testing.',
+      credentialUrl: 'https://coursera.org/share/397318c8ef04f3d78f79e2dc79d417cb',
       imageUrl: 'https://placehold.co/150x100/4285F4/FFFFFF?text=Certification+1'
     },
     {
       id: 'cert-2',
-      name: 'Certification 2',
+      name: 'The Bits and Bytes of Computer Networking',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/FFD700/000000?text=UMich',
-      credentialUrl: '#',
+      description: 'A course designed to provide a comprehensive overview of computer networking. It covers fundamental concepts of modern networking technologies and protocols, including cloud computing and practical applications for IT professionals.',
+      credentialUrl: 'https://coursera.org/share/3de7f88ecd9e24321cae729a45f5c8ff',
       imageUrl: 'https://placehold.co/150x100/FFD700/000000?text=Certification+2'
     },
     {
       id: 'cert-3',
-      name: 'Certification 3',
+      name: 'Operating Systems and You: Becoming a Power User',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/3B5998/FFFFFF?text=Meta',
-      credentialUrl: '#',
+      description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux. ',
+      credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
       imageUrl: 'https://placehold.co/150x100/3B5998/FFFFFF?text=Certification+3'
     },
     {
       id: 'cert-4',
-      name: 'Certification 4',
+      name: 'System Administration and IT Infrastructure Services',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/006699/FFFFFF?text=IBM',
-      credentialUrl: '#',
+      description: 'Encompass the technical maintenance, refinement, and smooth running of computer systems and networks within an organization, ensuring they function effectively and safely. This includes managing servers, cloud resources, user information, and productivity, as well as disaster recovery planning.',
+      credentialUrl: 'https://coursera.org/share/7a625b42aac4a37b7ea962fa41b18823',
       imageUrl: 'https://placehold.co/150x100/006699/FFFFFF?text=Certification+4'
     },
     {
       id: 'cert-5',
-      name: 'Certification 5',
+      name: 'Technical Support Fundamentals',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/FF9900/000000?text=AWS',
-      credentialUrl: '#',
+      description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
+      credentialUrl: 'https://coursera.org/share/21a31c27ddac9b76446edd246ad43e4a',
       imageUrl: 'https://placehold.co/150x100/FF9900/000000?text=Certification+5'
     },
     {
       id: 'cert-6',
-      name: 'Certification 6',
+      name: 'Introduction to Database Migration',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/0078D4/FFFFFF?text=Azure',
-      credentialUrl: '#',
+      description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
       imageUrl: 'https://placehold.co/150x100/0078D4/FFFFFF?text=Certification+6'
     },
     {
       id: 'cert-7',
-      name: 'Certification 7',
+      name: 'Amazon RDS for MariaDB Getting Started',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/F26522/FFFFFF?text=CompTIA',
-      credentialUrl: '#',
+      description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
       imageUrl: 'https://placehold.co/150x100/F26522/FFFFFF?text=Certification+7'
     },
     {
       id: 'cert-8',
-      name: 'Certification 8',
+      name: 'Introduction to Responsible AI',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/0096D6/FFFFFF?text=Scrum',
-      credentialUrl: '#',
+      description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
       imageUrl: 'https://placehold.co/150x100/0096D6/FFFFFF?text=Certification+8'
     },
     {
       id: 'cert-9',
-      name: 'Certification 9',
+      name: 'Getting Started with DevOps on AWS',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      logoUrl: 'https://placehold.co/100x100/CC0000/FFFFFF?text=PMI',
-      credentialUrl: '#',
+      description: 'This beginner-level course is for technical learners in the development and operations domains who are interested in learning the basic concepts of DevOps on AWS. Using discussions, interactive content, and demonstrations, you will learn about culture, practices, and tools used in a DevOps environment. ',
       imageUrl: 'https://placehold.co/150x100/CC0000/FFFFFF?text=Certification+9'
     },
   ];
 
-  const displayCertifications = certifications; // No duplication needed here, as it now slides back and forth
+  const displayCertifications = certifications;
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
