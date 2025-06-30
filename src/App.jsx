@@ -203,6 +203,23 @@ const App = () => {
     },
   ];
 
+  const workExperience = [
+    {
+      id: 'work-1',
+      title: 'Department Team Leader, Full Stack WordPress Developer Intern',
+      company: 'ROC.PH Digital Marketing Services',
+      years: 'June 2024 - October 2024',
+      description: 'Earned commendation for leadership and key contributions as Department Team Leader, starting from Full Stack WordPress Developer role. Reported directly to the CEO on team performance, milestones, and challenges and worked with cross-functional teams to deliver integrated web solutions.'
+    },
+    {
+      id: 'work-2',
+      title: 'Front-End Web Developer Intern',
+      company: 'LexMeet, Inc.',
+      years: 'June 2023 - October 2024',
+      description: 'Developed and designed user-facing features, applying logical reasoning to effectively solve problems, while consistently demonstrating initiative, a strong work ethic, and timely task completion; throughout the role, was trusted with confidential information and remained resilient and reliable, particularly in high-pressure and critical situations.'
+    }
+  ];
+
   const education = [
     {
       id: 'edu-1',
@@ -386,6 +403,7 @@ const App = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6">
             <button onClick={() => scrollToSection('projects')} className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400 hover:bg-gray-700' : 'text-gray-600 hover:text-indigo-700 hover:bg-gray-100'} font-medium transition duration-300 rounded-md px-3 py-2`}>Projects</button>
+            <button onClick={() => scrollToSection('work-experience')} className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400 hover:bg-gray-700' : 'text-gray-600 hover:text-indigo-700 hover:bg-gray-100'} font-medium transition duration-300 rounded-md px-3 py-2`}>Work Experience</button>
             <button onClick={() => scrollToSection('skills')} className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400 hover:bg-gray-700' : 'text-gray-600 hover:text-indigo-700 hover:bg-gray-100'} font-medium transition duration-300 rounded-md px-3 py-2`}>Skills</button>
             <button onClick={() => scrollToSection('education')} className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400 hover:bg-gray-700' : 'text-gray-600 hover:text-indigo-700 hover:bg-gray-100'} font-medium transition duration-300 rounded-md px-3 py-2`}>Education</button>
             <button onClick={() => scrollToSection('certifications')} className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400 hover:bg-gray-700' : 'text-gray-600 hover:text-indigo-700 hover:bg-gray-100'} font-medium transition duration-300 rounded-md px-3 py-2`}>Certifications</button>
@@ -411,6 +429,7 @@ const App = () => {
         {isMenuOpen && (
           <div className={`md:hidden ${isDarkMode ? 'bg-gray-800 shadow-lg' : 'bg-white shadow-lg'} py-2`}>
             <button onClick={() => scrollToSection('projects')} className={`block w-full text-left px-4 py-2 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'}`}>Projects</button>
+            <button onClick={() => scrollToSection('work-experience')} className={`block w-full text-left px-4 py-2 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'}`}>Work Experience</button>
             <button onClick={() => scrollToSection('skills')} className={`block w-full text-left px-4 py-2 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'}`}>Skills</button>
             <button onClick={() => scrollToSection('education')} className={`block w-full text-left px-4 py-2 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'}`}>Education</button>
             <button onClick={() => scrollToSection('certifications')} className={`block w-full text-left px-4 py-2 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-100'}`}>Certifications</button>
@@ -482,15 +501,34 @@ const App = () => {
         </div>
       </section>
 
+      {/* Work Experience Section */}
+      <section id="work-experience" className={`py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+        <div className="container mx-auto px-4">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
+            Work Experience
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {workExperience.map((job) => (
+              <div key={job.id} className={`p-6 rounded-xl shadow-lg border-b-4 border-teal-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'}`}>
+                <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`}>{job.title}</h3>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{job.company}</p>
+                <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm mb-3`}>{job.years}</p>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>{job.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
-      <section id="skills" className={`py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+      <section id="skills" className={`py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
             Skills
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skills).map(([category, skillList]) => (
-              <div key={category} className={`p-6 rounded-xl shadow-lg border-b-4 border-indigo-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'}`}>
+              <div key={category} className={`p-6 rounded-xl shadow-lg border-b-4 border-indigo-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
                 <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>{category}</h3>
                 <ul className="list-disc list-inside space-y-2">
                   {skillList.map((skill, index) => (
@@ -509,14 +547,14 @@ const App = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className={`pt-12 md:pt-12 py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section id="education" className={`pt-12 md:pt-12 py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
             Education
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {education.map((edu) => (
-              <div key={edu.id} className={`p-6 rounded-xl shadow-lg border-b-4 border-indigo-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex items-start space-x-4 ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+              <div key={edu.id} className={`p-6 rounded-xl shadow-lg border-b-4 border-indigo-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex items-start space-x-4 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'}`}>
                 <div>
                   <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>{edu.degree}</h3>
                   <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{edu.institution}</p>
@@ -530,7 +568,7 @@ const App = () => {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className={`mx-auto px-4 py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+      <section id="certifications" className={`mx-auto px-4 py-12 md:py-12 scroll-mt-[96px] ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
           Certifications
         </h2>
