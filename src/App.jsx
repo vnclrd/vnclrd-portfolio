@@ -4,12 +4,20 @@ const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const certificationsContainerRef = useRef(null);
+  const projectsContainerRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftStart, setScrollLeftStart] = useState(0);
 
-  const scrollIntervalRef = useRef(null);
+  const certScrollIntervalRef = useRef(null);
+  const certScrollDirectionRef = useRef('forward');
+  const certScrollPausedRef = useRef(false);
+
+  const projectScrollIntervalRef = useRef(null);
+  const projectScrollDirectionRef = useRef('forward');
+  const projectScrollPausedRef = useRef(false);
+
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -32,123 +40,295 @@ const App = () => {
     };
   }, []);
 
-  const scrollDirectionRef = useRef('forward');
-  const scrollPausedRef = useRef(false);
-
-  const startAutomaticScrolling = () => {
+  // Certifications Carousel Logic
+  const startCertAutomaticScrolling = () => {
     const container = certificationsContainerRef.current;
-    if (!container || scrollPausedRef.current) return;
+    if (!container || certScrollPausedRef.current) return;
 
     const scrollSpeed = 1;
     const intervalTime = 20;
-    // Ensure certifications array is not empty before querying for card
-    const card = container.querySelector('[data-card]');
-    // Fallback to a default width if card is not found or has no offsetWidth
+    const card = container.querySelector('[data-cert-card]');
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-    if (scrollIntervalRef.current) {
-      clearInterval(scrollIntervalRef.current);
+    if (certScrollIntervalRef.current) {
+      clearInterval(certScrollIntervalRef.current);
     }
 
-    scrollIntervalRef.current = setInterval(() => {
+    certScrollIntervalRef.current = setInterval(() => {
       if (!container) return;
 
-      if (scrollDirectionRef.current === 'forward') {
+      if (certScrollDirectionRef.current === 'forward') {
         container.scrollLeft += scrollSpeed;
 
+        // If scrolled to the end, reverse direction and set a pause
         if (container.scrollLeft >= maxScrollLeft) {
-          clearInterval(scrollIntervalRef.current);
-          scrollIntervalRef.current = null;
-          scrollPausedRef.current = true;
+          clearInterval(certScrollIntervalRef.current); // Stop current interval
+          certScrollIntervalRef.current = null;
+          certScrollPausedRef.current = true; // Pause auto-scroll
 
+          // After a delay, reverse direction and restart auto-scroll
           setTimeout(() => {
-            scrollDirectionRef.current = 'backward';
-            scrollPausedRef.current = false;
-            startAutomaticScrolling();
-          }, 5000);
+            certScrollDirectionRef.current = 'backward';
+            certScrollPausedRef.current = false;
+            startCertAutomaticScrolling();
+          }, 5000); // 5 seconds pause
         }
 
-      } else {
+      } else { // Scrolling backward
         container.scrollLeft -= scrollSpeed;
 
+        // If scrolled to the beginning, reverse direction and set a pause
         if (container.scrollLeft <= 0) {
-          clearInterval(scrollIntervalRef.current);
-          scrollIntervalRef.current = null;
-          scrollPausedRef.current = true;
+          clearInterval(certScrollIntervalRef.current); // Stop current interval
+          certScrollIntervalRef.current = null;
+          certScrollPausedRef.current = true; // Pause auto-scroll
 
+          // After a delay, reverse direction and restart auto-scroll
           setTimeout(() => {
-            scrollDirectionRef.current = 'forward';
-            scrollPausedRef.current = false;
-            startAutomaticScrolling();
-          }, 5000);
+            certScrollDirectionRef.current = 'forward';
+            certScrollPausedRef.current = false;
+            startCertAutomaticScrolling();
+          }, 5000); // 5 seconds pause
         }
       }
     }, intervalTime);
   };
 
-  const stopAutomaticScrolling = () => {
-    if (scrollIntervalRef.current) {
-      clearInterval(scrollIntervalRef.current);
-      scrollIntervalRef.current = null;
+  const stopCertAutomaticScrolling = () => {
+    if (certScrollIntervalRef.current) {
+      clearInterval(certScrollIntervalRef.current);
+      certScrollIntervalRef.current = null;
     }
   };
 
+  let certResumeScrollTimeout = null;
+  const pauseCertAutoScrollTemporarily = () => {
+    stopCertAutomaticScrolling();
+    if (certResumeScrollTimeout) {
+      clearTimeout(certResumeScrollTimeout);
+    }
+    certResumeScrollTimeout = setTimeout(() => {
+      startCertAutomaticScrolling();
+    }, 5000);
+  };
+
+  const scrollCertificationsLeft = () => {
+    const container = certificationsContainerRef.current;
+    if (!container) return;
+
+    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
+
+    const card = container.querySelector('[data-cert-card]');
+    const cardWidth = card?.offsetWidth || 300;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  };
+
+  const scrollCertificationsRight = () => {
+    const container = certificationsContainerRef.current;
+    if (!container) return;
+
+    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
+
+    const card = container.querySelector('[data-cert-card]');
+    const cardWidth = card?.offsetWidth || 300;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+
+  // Projects Carousel Logic
+  const startProjectAutomaticScrolling = () => {
+    const container = projectsContainerRef.current;
+    if (!container || projectScrollPausedRef.current) return;
+
+    const scrollSpeed = 1; // Speed of the scroll
+    const intervalTime = 20; // Interval for updating scroll position
+    const card = container.querySelector('[data-project-card]');
+    const cardWidth = card?.offsetWidth || 350;
+    const gap = 24;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    // Clear any existing interval
+    if (projectScrollIntervalRef.current) {
+      clearInterval(projectScrollIntervalRef.current);
+    }
+
+    projectScrollIntervalRef.current = setInterval(() => {
+      if (!container) return;
+
+      if (projectScrollDirectionRef.current === 'forward') {
+        container.scrollLeft += scrollSpeed;
+
+        // If scrolled to the end, reverse direction and set a pause
+        if (container.scrollLeft >= maxScrollLeft) {
+          clearInterval(projectScrollIntervalRef.current);
+          projectScrollIntervalRef.current = null;
+          projectScrollPausedRef.current = true;
+
+          setTimeout(() => {
+            projectScrollDirectionRef.current = 'backward';
+            projectScrollPausedRef.current = false;
+            startProjectAutomaticScrolling();
+          }, 5000); // 5 seconds pause
+        }
+
+      } else { // Scrolling backward
+        container.scrollLeft -= scrollSpeed;
+
+        // If scrolled to the beginning, reverse direction and set a pause
+        if (container.scrollLeft <= 0) {
+          clearInterval(projectScrollIntervalRef.current);
+          projectScrollIntervalRef.current = null;
+          projectScrollPausedRef.current = true;
+
+          setTimeout(() => {
+            projectScrollDirectionRef.current = 'forward';
+            projectScrollPausedRef.current = false;
+            startProjectAutomaticScrolling();
+          }, 5000); // 5 seconds pause
+        }
+      }
+    }, intervalTime);
+  };
+
+  const stopProjectAutomaticScrolling = () => {
+    if (projectScrollIntervalRef.current) {
+      clearInterval(projectScrollIntervalRef.current);
+      projectScrollIntervalRef.current = null;
+    }
+  };
+
+  let projectResumeScrollTimeout = null;
+  const pauseProjectAutoScrollTemporarily = () => {
+    stopProjectAutomaticScrolling();
+    if (projectResumeScrollTimeout) {
+      clearTimeout(projectResumeScrollTimeout);
+    }
+    projectResumeScrollTimeout = setTimeout(() => {
+      startProjectAutomaticScrolling();
+    }, 5000);
+  };
+
+  const scrollProjectsLeft = () => {
+    const container = projectsContainerRef.current;
+    if (!container) return;
+
+    pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
+
+    const card = container.querySelector('[data-project-card]');
+    const cardWidth = card?.offsetWidth || 350;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  };
+
+  const scrollProjectsRight = () => {
+    const container = projectsContainerRef.current;
+    if (!container) return;
+
+    pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
+
+    const card = container.querySelector('[data-project-card]');
+    const cardWidth = card?.offsetWidth || 350;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  const handleMouseLeave = (containerRef, startAutoScrollFn) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (isDragging) {
+      setIsDragging(false);
+      startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
+    }
+  };
+
+  const handleMouseUp = (containerRef, startAutoScrollFn) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (isDragging) {
+      setIsDragging(false);
+      startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
+    }
+  };
+
+  const handleMouseMove = (e, containerRef) => {
+    const container = containerRef.current;
+    if (!container || !isDragging) return;
+
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX);
+    container.scrollLeft = scrollLeftStart - walk;
+  };
+
+
+  // Effect for Certifications Carousel
   useEffect(() => {
     const container = certificationsContainerRef.current;
     if (!container) return;
 
-    startAutomaticScrolling();
+    startCertAutomaticScrolling(); // Start automatic scrolling
 
-    const handleMouseDown = (e) => {
-      stopAutomaticScrolling();
-      setIsDragging(true);
-      setStartX(e.pageX - container.offsetLeft);
-      setScrollLeftStart(container.scrollLeft);
-      container.style.cursor = 'grabbing';
-    };
+    // Event listeners for dragging
+    const mouseDownCert = (e) => handleMouseDown(e, certificationsContainerRef, startCertAutomaticScrolling, stopCertAutomaticScrolling);
+    const mouseLeaveCert = () => handleMouseLeave(certificationsContainerRef, startCertAutomaticScrolling);
+    const mouseUpCert = () => handleMouseUp(certificationsContainerRef, startCertAutomaticScrolling);
+    const mouseMoveCert = (e) => handleMouseMove(e, certificationsContainerRef);
 
-    const handleMouseLeave = () => {
-      if (isDragging) {
-        setIsDragging(false);
-        startAutomaticScrolling();
-        container.style.cursor = 'grab';
-      }
-    };
-
-    const handleMouseUp = () => {
-      if (isDragging) {
-        setIsDragging(false);
-        startAutomaticScrolling();
-        container.style.cursor = 'grab';
-      }
-    };
-
-    const handleMouseMove = (e) => {
-      if (!isDragging) return;
-      e.preventDefault(); // Prevent text selection
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX); // How far the mouse has moved
-      container.scrollLeft = scrollLeftStart - walk;
-    };
-
-    container.addEventListener('mousedown', handleMouseDown);
-    container.addEventListener('mouseleave', handleMouseLeave);
-    container.addEventListener('mouseup', handleMouseUp);
-    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mousedown', mouseDownCert);
+    container.addEventListener('mouseleave', mouseLeaveCert);
+    container.addEventListener('mouseup', mouseUpCert);
+    container.addEventListener('mousemove', mouseMoveCert);
 
     return () => {
-      stopAutomaticScrolling();
-      container.removeEventListener('mousedown', handleMouseDown);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-      container.removeEventListener('mouseup', handleMouseUp);
-      container.removeEventListener('mousemove', handleMouseMove);
-      // Remove these redundant event listeners as they are not added in this useEffect
-      // container.removeEventListener('mouseenter', stopAutomaticScrolling);
-      // container.removeEventListener('mouseleave', startAutomaticScrolling);
+      stopCertAutomaticScrolling(); // Cleanup on unmount
+      container.removeEventListener('mousedown', mouseDownCert);
+      container.removeEventListener('mouseleave', mouseLeaveCert);
+      container.removeEventListener('mouseup', mouseUpCert);
+      container.removeEventListener('mousemove', mouseMoveCert);
     };
-  }, [isDragging, startX, scrollLeftStart]);
+  }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state for consistent behavior
+
+  // Effect for Projects Carousel
+  useEffect(() => {
+    const container = projectsContainerRef.current;
+    if (!container) return;
+
+    startProjectAutomaticScrolling(); // Start automatic scrolling
+
+    // Event listeners for dragging
+    const mouseDownProject = (e) => handleMouseDown(e, projectsContainerRef, startProjectAutomaticScrolling, stopProjectAutomaticScrolling);
+    const mouseLeaveProject = () => handleMouseLeave(projectsContainerRef, startProjectAutomaticScrolling);
+    const mouseUpProject = () => handleMouseUp(projectsContainerRef, startProjectAutomaticScrolling);
+    const mouseMoveProject = (e) => handleMouseMove(e, projectsContainerRef);
+
+    container.addEventListener('mousedown', mouseDownProject);
+    container.addEventListener('mouseleave', mouseLeaveProject);
+    container.addEventListener('mouseup', mouseUpProject);
+    container.addEventListener('mousemove', mouseMoveProject);
+
+    return () => {
+      stopProjectAutomaticScrolling(); // Cleanup on unmount
+      container.removeEventListener('mousedown', mouseDownProject);
+      container.removeEventListener('mouseleave', mouseLeaveProject);
+      container.removeEventListener('mouseup', mouseUpProject);
+      container.removeEventListener('mousemove', mouseMoveProject);
+    };
+  }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state
+
 
   const skills = {
     'Web Development': ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
@@ -185,23 +365,43 @@ const App = () => {
   const projects = [
     {
       id: 'project-1',
-      category: 'Project 1',
-      title: 'Project 1',
+      category: 'Category 1',
+      title: 'E-commerce Platform',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['Python', 'HTML', 'CSS', 'JavaScript'],
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+1',
       link: '#',
     },
     {
       id: 'project-2',
-      category: 'Project 2',
+      category: 'Category 1',
       title: 'Project 2',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['Python', 'HTML', 'CSS', 'JavaScript'],
+      technologies: ['Python', 'Pandas', 'Matplotlib', 'Streamlit'],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+2',
       link: '#',
     },
+    {
+      id: 'project-3',
+      category: 'Category 1',
+      title: 'Project 3',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      technologies: ['React Native', 'Firebase', 'Redux'],
+      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+3',
+      link: '#',
+    },
+    {
+      id: 'project-4',
+      category: 'Category 1',
+      title: 'Project 4',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      technologies: ['Python', 'TensorFlow', 'Keras', 'Jupyter Notebook'],
+      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+4',
+      link: '#',
+    },
   ];
+
+  const displayProjects = projects;
 
   const workExperience = [
     {
@@ -332,7 +532,7 @@ const App = () => {
     },
   ];
 
-  const displayCertifications = certifications;
+  const displayCertifications = certifications; // No duplication needed here, as it now slides back and forth
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -347,46 +547,6 @@ const App = () => {
       top: 0,
       behavior: 'smooth',
     });
-  };
-
-  let resumeScrollTimeout = null;
-
-  const pauseAutoScrollTemporarily = () => {
-    stopAutomaticScrolling();
-    if (resumeScrollTimeout) {
-      clearTimeout(resumeScrollTimeout);
-    }
-    resumeScrollTimeout = setTimeout(() => {
-      startAutomaticScrolling();
-    }, 5000);
-  };
-
-  const scrollCertificationsLeft = () => {
-    const container = certificationsContainerRef.current;
-    if (!container) return;
-
-    pauseAutoScrollTemporarily();
-
-    const card = container.querySelector('[data-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  };
-
-  const scrollCertificationsRight = () => {
-    const container = certificationsContainerRef.current;
-    if (!container) return;
-
-    pauseAutoScrollTemporarily();
-
-    const card = container.querySelector('[data-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   return (
@@ -458,46 +618,74 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4 py-12 md:py-12 scroll-mt-[96px]">
+      <section id="projects" className="mx-auto px-4 py-12 md:py-12 scroll-mt-[96px]">
         <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
-          {projects.map((project) => (
-            <div key={project.id} className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-purple-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-56 object-cover"
-                onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/600x400/CCCCCC/000000?text=Image+Error`; }}
-              />
-              <div className="p-6">
-                <span className={`text-sm font-semibold px-3 py-1 rounded-full mb-3 inline-block ${isDarkMode ? 'text-purple-300 bg-purple-900' : 'text-purple-600 bg-purple-100'}`}>
-                  {project.category}
-                </span>
-                <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{project.title}</h3>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-4`}>{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className={`${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'} text-xs px-3 py-1 rounded-full`}>
-                      {tech}
+        <div className="relative flex items-center justify-center shadow-mask">
+          <button
+            onClick={scrollProjectsLeft}
+            className={`absolute left-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          {/* Projects Carousel Container */}
+          <div
+            ref={projectsContainerRef}
+            className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+          >
+            {displayProjects.map((project, index) => (
+              <div key={`${project.id}-${index}`} data-project-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-purple-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[350px] md:min-w-[400px] lg:min-w-[450px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-56 object-cover"
+                  onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/600x400/CCCCCC/000000?text=Image+Error`; }}
+                />
+                <div className="p-6 flex-grow flex flex-col justify-between">
+                  <div>
+                    <span className={`text-sm font-semibold px-3 py-1 rounded-full mb-3 inline-block ${isDarkMode ? 'text-purple-300 bg-purple-900' : 'text-purple-600 bg-purple-100'}`}>
+                      {project.category}
                     </span>
-                  ))}
+                    <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{project.title}</h3>
+                    <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-4`}>{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className={`${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'} text-xs px-3 py-1 rounded-full`}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-800'} font-semibold transition duration-300 mt-auto`}
+                  >
+                    Learn More
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-800'} font-semibold transition duration-300`}
-                >
-                  Learn More
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <button
+            onClick={scrollProjectsRight}
+            className={`absolute right-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
         </div>
       </section>
 
@@ -534,7 +722,7 @@ const App = () => {
                   {skillList.map((skill, index) => (
                     <li key={index} className={`flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       <svg className={`w-4 h-4 mr-2 flex-shrink-0 ${isDarkMode ? 'text-indigo-300' : 'text-indigo-400'}`} fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 to 001.414 0l4-4z" clipRule="evenodd"></path>
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 to 00-1.414 1.414l2 2a1 1 to 001.414 0l4-4z" clipRule="evenodd"></path>
                       </svg>
                       {skill}
                     </li>
@@ -587,11 +775,10 @@ const App = () => {
           <div
             ref={certificationsContainerRef}
             className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
-            style={{ cursor: isDragging ? 'grabbing' : 'grab' }} // Change cursor based on dragging state
           >
             {/* Use displayCertifications for duplication */}
             {displayCertifications.map((cert, index) => (
-              <div key={`${cert.id}-${index}`} data-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-green-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col text-center min-w-[300px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}> {/* min-w-[300px] controls card width */}
+              <div key={`${cert.id}-${index}`} data-cert-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-green-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col text-center min-w-[300px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}> {/* min-w-[300px] controls card width */}
                 <img
                   src={cert.imageUrl}
                   alt={cert.name}
