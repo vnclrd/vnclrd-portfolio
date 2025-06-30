@@ -332,13 +332,15 @@ const App = () => {
 
   const skills = {
     'Web Development': ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
-    'Programming': ['Python', 'JavaScript (ES6+)'],
+    'Programming': ['Python (Flask)', 'JavaScript (ES6+)'],
     'Database': ['MySQL'],
     'JavaScript Technologies': ['React', 'Node.js'],
     'Front-End Build Tools': ['Vite', 'PostCSS', 'Autoprefixer'],
     'CSS Framework': ['Bootstrap', 'Tailwind CSS'],
     'Version Control': ['Git', 'GitHub', 'GitLab'],
     'Software & Tools': [
+      'Visual Studio Code',
+      'Arduino IDE',
       'Figma',
       'Canva',
       'Microsoft Office Suite',
@@ -365,29 +367,29 @@ const App = () => {
   const projects = [
     {
       id: 'project-1',
-      category: 'Category 1',
-      title: 'E-commerce Platform',
+      category: 'Web Development',
+      title: 'InstaPrint',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+1',
+      technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Python (Flask)', 'MySQL', 'Bootstrap', 'Arduino IDE'],
+      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=InstaPrint',
       link: '#',
     },
     {
       id: 'project-2',
-      category: 'Category 1',
-      title: 'Project 2',
+      category: 'Mobile App Development',
+      title: 'ShouldU',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['Python', 'Pandas', 'Matplotlib', 'Streamlit'],
-      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+2',
+      technologies: ['', '', ''],
+      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=ShouldU',
       link: '#',
     },
     {
       id: 'project-3',
-      category: 'Category 1',
-      title: 'Project 3',
+      category: 'Web Development',
+      title: 'Portfolio Website',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+3',
+      technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
+      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Portfolio+Website',
       link: '#',
     },
     {
@@ -395,7 +397,7 @@ const App = () => {
       category: 'Category 1',
       title: 'Project 4',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['Python', 'TensorFlow', 'Keras', 'Jupyter Notebook'],
+      technologies: ['', '', ''],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+4',
       link: '#',
     },
@@ -606,13 +608,13 @@ const App = () => {
             Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
           </h1>
           <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
           </p>
           <button
-            onClick={() => scrollToSection('projects')}
+            onClick={() => scrollToSection('about')}
             className="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400"
           >
-            View My Work
+            More About Me
           </button>
         </div>
       </section>
