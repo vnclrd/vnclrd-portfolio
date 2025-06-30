@@ -447,7 +447,6 @@ const App = () => {
       institution: 'Polytechnic University of the Philippines',
       years: '2021 - 2025',
       description: 'Specialized in Software Development with a focus on web technologies.',
-      logoUrl: 'https://placehold.co/100x100/ADD8E6/000000?text=PUP+Logo'
     },
     {
       id: 'edu-2',
@@ -455,7 +454,6 @@ const App = () => {
       institution: 'Polytechnic University of the Philippines',
       years: '2019 - 2021',
       description: 'My first course in Polytechnic University of the Philippines. Took 2 years of this course before shifting to BS Computer Engineering in 2021.',
-      logoUrl: 'https://placehold.co/100x100/FFD700/000000?text=PUP+Logo'
     },
   ];
 
@@ -467,7 +465,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduces the core concepts of UX design and the design process, emphasizing user-centered design and accessibility. It prepares learners for entry-level UX design roles by covering topics like user research, wireframing, prototyping, and testing.',
       credentialUrl: 'https://coursera.org/share/397318c8ef04f3d78f79e2dc79d417cb',
-      imageUrl: 'https://placehold.co/150x100/4285F4/FFFFFF?text=Certification+1'
+      imageUrl: 'public/images/cert-1.png'
     },
     {
       id: 'cert-2',
@@ -476,7 +474,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course designed to provide a comprehensive overview of computer networking. It covers fundamental concepts of modern networking technologies and protocols, including cloud computing and practical applications for IT professionals.',
       credentialUrl: 'https://coursera.org/share/3de7f88ecd9e24321cae729a45f5c8ff',
-      imageUrl: 'https://placehold.co/150x100/FFD700/000000?text=Certification+2'
+      imageUrl: 'public/images/cert-2.png'
     },
     {
       id: 'cert-3',
@@ -485,7 +483,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux. ',
       credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
-      imageUrl: 'https://placehold.co/150x100/3B5998/FFFFFF?text=Certification+3'
+      imageUrl: 'public/images/cert-3.png'
     },
     {
       id: 'cert-4',
@@ -494,7 +492,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Encompass the technical maintenance, refinement, and smooth running of computer systems and networks within an organization, ensuring they function effectively and safely. This includes managing servers, cloud resources, user information, and productivity, as well as disaster recovery planning.',
       credentialUrl: 'https://coursera.org/share/7a625b42aac4a37b7ea962fa41b18823',
-      imageUrl: 'https://placehold.co/150x100/006699/FFFFFF?text=Certification+4'
+      imageUrl: 'public/images/cert-4.png'
     },
     {
       id: 'cert-5',
@@ -503,7 +501,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       credentialUrl: 'https://coursera.org/share/21a31c27ddac9b76446edd246ad43e4a',
-      imageUrl: 'https://placehold.co/150x100/FF9900/000000?text=Certification+5'
+      imageUrl: 'public/images/cert-5.png'
     },
     {
       id: 'cert-6',
@@ -511,7 +509,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
-      imageUrl: 'https://placehold.co/150x100/0078D4/FFFFFF?text=Certification+6'
+      imageUrl: 'public/images/cert-6.png'
     },
     {
       id: 'cert-7',
@@ -519,7 +517,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
-      imageUrl: 'https://placehold.co/150x100/F26522/FFFFFF?text=Certification+7'
+      imageUrl: 'public/images/cert-7.png'
     },
     {
       id: 'cert-8',
@@ -527,7 +525,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
-      imageUrl: 'https://placehold.co/150x100/0096D6/FFFFFF?text=Certification+8'
+      imageUrl: 'public/images/cert-8.png'
     },
     {
       id: 'cert-9',
@@ -535,7 +533,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This beginner-level course is for technical learners in the development and operations domains who are interested in learning the basic concepts of DevOps on AWS. Using discussions, interactive content, and demonstrations, you will learn about culture, practices, and tools used in a DevOps environment. ',
-      imageUrl: 'https://placehold.co/150x100/CC0000/FFFFFF?text=Certification+9'
+      imageUrl: 'public/images/cert-9.png'
     },
   ];
 
@@ -792,7 +790,7 @@ const App = () => {
                 <img
                   src={cert.imageUrl}
                   alt={cert.name}
-                  className="w-full h-32 object-cover rounded-t-xl"
+                  className="w-full h-32 object-cover object-top rounded-t-xl"
                   onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/150x100/CCCCCC/000000?text=Cert+Image`; }}
                 />
                 <div className="p-6 flex-grow flex flex-col justify-start"> {/* Align items to the start */}
