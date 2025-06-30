@@ -10,13 +10,15 @@ const App = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeftStart, setScrollLeftStart] = useState(0);
 
+  // Refs for Certifications carousel automatic scrolling
   const certScrollIntervalRef = useRef(null);
-  const certScrollDirectionRef = useRef('forward');
-  const certScrollPausedRef = useRef(false);
+  const certScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
+  const certScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
 
+  // Refs for Projects carousel automatic scrolling
   const projectScrollIntervalRef = useRef(null);
-  const projectScrollDirectionRef = useRef('forward');
-  const projectScrollPausedRef = useRef(false);
+  const projectScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
+  const projectScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
 
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -40,24 +42,25 @@ const App = () => {
     };
   }, []);
 
-  // Certifications Carousel Logic
+  // --- Certifications Carousel Logic ---
   const startCertAutomaticScrolling = () => {
     const container = certificationsContainerRef.current;
     if (!container || certScrollPausedRef.current) return;
 
-    const scrollSpeed = 1;
-    const intervalTime = 20;
+    const scrollSpeed = 1; // Speed of the scroll
+    const intervalTime = 20; // Interval for updating scroll position
     const card = container.querySelector('[data-cert-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const cardWidth = card?.offsetWidth || 300; // Default width if card not found
+    const gap = 24; // Gap between cards
+    const maxScrollLeft = container.scrollWidth - container.clientWidth; // Max scrollable distance
 
+    // Clear any existing interval to prevent multiple intervals running
     if (certScrollIntervalRef.current) {
       clearInterval(certScrollIntervalRef.current);
     }
 
     certScrollIntervalRef.current = setInterval(() => {
-      if (!container) return;
+      if (!container) return; // Exit if container is no longer available
 
       if (certScrollDirectionRef.current === 'forward') {
         container.scrollLeft += scrollSpeed;
@@ -143,7 +146,7 @@ const App = () => {
   };
 
 
-  // Projects Carousel Logic
+  // --- Projects Carousel Logic ---
   const startProjectAutomaticScrolling = () => {
     const container = projectsContainerRef.current;
     if (!container || projectScrollPausedRef.current) return;
@@ -244,6 +247,19 @@ const App = () => {
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
+
+  // Unified mouse drag handling for both carousels
+  const handleMouseDown = (e, containerRef, startAutoScrollFn, stopAutoScrollFn) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    stopAutoScrollFn(); // Stop automatic scrolling for the specific carousel
+    setIsDragging(true);
+    setStartX(e.pageX - container.offsetLeft);
+    setScrollLeftStart(container.scrollLeft);
+    container.style.cursor = 'grabbing';
+  };
+
   const handleMouseLeave = (containerRef, startAutoScrollFn) => {
     const container = containerRef.current;
     if (!container) return;
@@ -251,6 +267,7 @@ const App = () => {
     if (isDragging) {
       setIsDragging(false);
       startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
+      container.style.cursor = 'grab';
     }
   };
 
@@ -261,6 +278,7 @@ const App = () => {
     if (isDragging) {
       setIsDragging(false);
       startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
+      container.style.cursor = 'grab';
     }
   };
 
@@ -626,6 +644,7 @@ const App = () => {
           <div
             ref={projectsContainerRef}
             className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
           >
             {displayProjects.map((project, index) => (
               <div key={`${project.id}-${index}`} data-project-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-purple-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[350px] md:min-w-[400px] lg:min-w-[450px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
@@ -764,29 +783,32 @@ const App = () => {
           <div
             ref={certificationsContainerRef}
             className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            // Removed onMouseEnter and onMouseLeave to disable pause on hover
           >
-            {/* Use displayCertifications for duplication */}
+            {/* Use displayCertifications for uniformity */}
             {displayCertifications.map((cert, index) => (
-              <div key={`${cert.id}-${index}`} data-cert-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-green-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col text-center min-w-[300px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}> {/* min-w-[300px] controls card width */}
+              <div key={`${cert.id}-${index}`} data-cert-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-green-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col text-center min-w-[300px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
                 <img
                   src={cert.imageUrl}
                   alt={cert.name}
                   className="w-full h-32 object-cover rounded-t-xl"
                   onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/150x100/CCCCCC/000000?text=Cert+Image`; }}
                 />
-                <div className="p-6 flex-grow flex flex-col justify-between">
-                  <div>
-                    <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-green-400' : 'text-green-700'}`}>{cert.name}</h3>
+                <div className="p-6 flex-grow flex flex-col justify-start"> {/* Align items to the start */}
+                  <div className="min-h-[140px] flex flex-col justify-start text-left"> {/* Fixed height for content area */}
+                    <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-green-400' : 'text-green-700'} line-clamp-2`}>{cert.name}</h3>
                     <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{cert.issuer}</p>
                     <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm mb-3`}>{cert.date}</p>
-                    <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-3`}>{cert.description}</p>
+                    {/* Applying line-clamp to limit description lines and ensure uniformity */}
+                    <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed text-sm line-clamp-5 pb-8`}>{cert.description}</p>
                   </div>
                   {cert.credentialUrl && (
                     <a
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center font-semibold transition duration-300 mt-auto ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}
+                      className={`inline-flex items-center justify-center font-semibold transition duration-300 mt-auto pt-8 ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}
                     >
                       View Credential
                       <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
