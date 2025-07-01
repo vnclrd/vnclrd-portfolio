@@ -386,10 +386,10 @@ const App = () => {
     {
       id: 'project-1',
       category: 'Web Development',
-      title: 'InstaPrint',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      title: 'InstaPrint Web UI',
+      description: 'InstaPrint is a thesis project our group developed over three semesters. I was a lead developer for both the web UI, contributing to front-end and back-end, and the hardware of the prototype.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Python (Flask)', 'MySQL', 'Bootstrap', 'Arduino IDE'],
-      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=InstaPrint',
+      imageUrl: 'images/proj-1.jpeg',
       link: '#',
     },
     {
