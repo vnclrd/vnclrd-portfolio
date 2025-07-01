@@ -18,7 +18,7 @@ const App = () => {
   // Refs for Projects carousel automatic scrolling
   const projectScrollIntervalRef = useRef(null);
   const projectScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
-  const projectScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
+  const projectScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.e., on manual scroll)
 
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -630,7 +630,7 @@ const App = () => {
         <div className="relative flex items-center justify-center shadow-mask">
           <button
             onClick={scrollProjectsLeft}
-            className={`absolute left-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            className={`absolute left-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-r-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
             aria-label="Scroll left"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -685,7 +685,7 @@ const App = () => {
 
           <button
             onClick={scrollProjectsRight}
-            className={`absolute right-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            className={`absolute right-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-l-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
             aria-label="Scroll right"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -769,7 +769,7 @@ const App = () => {
         <div className="relative flex items-center justify-center shadow-mask">
           <button
             onClick={scrollCertificationsLeft}
-            className={`absolute left-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            className={`absolute left-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-r-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
             aria-label="Scroll left"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -821,7 +821,7 @@ const App = () => {
 
           <button
             onClick={scrollCertificationsRight}
-            className={`absolute right-4 z-10 p-3 text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'}`}
+            className={`absolute right-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-l-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
             aria-label="Scroll right"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
