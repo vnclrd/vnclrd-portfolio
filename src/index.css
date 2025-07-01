@@ -6,3 +6,8 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+.projects-carousel,
+.certifications-carousel {
+  cursor: default !important;
+}

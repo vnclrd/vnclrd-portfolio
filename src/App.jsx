@@ -257,7 +257,6 @@ const App = () => {
     setIsDragging(true);
     setStartX(e.pageX - container.offsetLeft);
     setScrollLeftStart(container.scrollLeft);
-    container.style.cursor = 'grabbing';
   };
 
   const handleMouseLeave = (containerRef, startAutoScrollFn) => {
@@ -267,7 +266,6 @@ const App = () => {
     if (isDragging) {
       setIsDragging(false);
       startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
-      container.style.cursor = 'grab';
     }
   };
 
@@ -641,8 +639,7 @@ const App = () => {
           {/* Projects Carousel Container */}
           <div
             ref={projectsContainerRef}
-            className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
-            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            className="projects-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
           >
             {displayProjects.map((project, index) => (
               <div key={`${project.id}-${index}`} data-project-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-purple-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[350px] md:min-w-[400px] lg:min-w-[450px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
@@ -780,8 +777,8 @@ const App = () => {
           {/* Added ref and hide-scrollbar class */}
           <div
             ref={certificationsContainerRef}
-            className="flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
-            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            className="certifications-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+
             // Removed onMouseEnter and onMouseLeave to disable pause on hover
           >
             {/* Use displayCertifications for uniformity */}
