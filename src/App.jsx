@@ -127,39 +127,94 @@ const App = () => {
     const container = certificationsContainerRef.current;
     if (!container) return;
 
-    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
-      return;
-    }
-
     pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-cert-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+
+    let targetScrollLeft = 0;
+    let foundTarget = false;
+
+    // Find the first card that is currently mostly visible on the left side of the container
+    // and scroll to the beginning of the previous card
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        // If the card is currently visible or just past the left edge
+        if (card.offsetLeft >= container.scrollLeft - (card.offsetWidth / 2) && card.offsetLeft < container.scrollLeft + container.clientWidth) {
+            // If it's the first card, snap to 0
+            if (i === 0) {
+                targetScrollLeft = 0;
+            } else {
+                // Otherwise, scroll to the previous card's offsetLeft
+                targetScrollLeft = cards[i - 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft > 0) {
+        // If no specific card found (e.g., in between cards), snap to the very beginning
+        targetScrollLeft = 0;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft === 0) {
+        // Already at the beginning, do nothing
+        return;
+    }
   };
 
   const scrollCertificationsRight = () => {
     const container = certificationsContainerRef.current;
     if (!container) return;
 
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
-      return;
-    }
-
     pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-cert-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    let targetScrollLeft = maxScrollLeft;
+    let foundTarget = false;
+
+    // Find the first card that is currently mostly visible on the right side of the container
+    // and scroll to the beginning of the next card
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        // If the card's right edge is past the current scroll position,
+        // meaning it's either fully visible, or partially visible on the right.
+        if (card.offsetLeft + card.offsetWidth > container.scrollLeft + container.clientWidth / 2) {
+            // If it's the last card, snap to maxScrollLeft
+            if (i === cards.length - 1) {
+                targetScrollLeft = maxScrollLeft;
+            } else {
+                // Otherwise, scroll to the next card's offsetLeft
+                targetScrollLeft = cards[i + 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft < maxScrollLeft) {
+        // If no specific card found (e.g., in between cards), snap to the very end
+        targetScrollLeft = maxScrollLeft;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft >= maxScrollLeft) {
+        // Already at the end, do nothing
+        return;
+    }
   };
 
 
@@ -240,39 +295,79 @@ const App = () => {
     const container = projectsContainerRef.current;
     if (!container) return;
 
-    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
-      return;
-    }
-
     pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-project-card]');
-    const cardWidth = card?.offsetWidth || 350;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-project-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+
+    let targetScrollLeft = 0;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.offsetLeft >= container.scrollLeft - (card.offsetWidth / 2) && card.offsetLeft < container.scrollLeft + container.clientWidth) {
+            if (i === 0) {
+                targetScrollLeft = 0;
+            } else {
+                targetScrollLeft = cards[i - 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft > 0) {
+        targetScrollLeft = 0;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft === 0) {
+        return;
+    }
   };
 
   const scrollProjectsRight = () => {
     const container = projectsContainerRef.current;
     if (!container) return;
 
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
-      return;
-    }
-
     pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-project-card]');
-    const cardWidth = card?.offsetWidth || 350;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-project-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    let targetScrollLeft = maxScrollLeft;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.offsetLeft + card.offsetWidth > container.scrollLeft + container.clientWidth / 2) {
+            if (i === cards.length - 1) {
+                targetScrollLeft = maxScrollLeft;
+            } else {
+                targetScrollLeft = cards[i + 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft < maxScrollLeft) {
+        targetScrollLeft = maxScrollLeft;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft >= maxScrollLeft) {
+        return;
+    }
   };
 
   // --- Other Work Experience Carousel Logic ---
@@ -392,39 +487,79 @@ const App = () => {
     const container = otherWorkExperienceRef.current;
     if (!container) return;
 
-    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
-      return;
-    }
-
     pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-other-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-other-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+
+    let targetScrollLeft = 0;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.offsetLeft >= container.scrollLeft - (card.offsetWidth / 2) && card.offsetLeft < container.scrollLeft + container.clientWidth) {
+            if (i === 0) {
+                targetScrollLeft = 0;
+            } else {
+                targetScrollLeft = cards[i - 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft > 0) {
+        targetScrollLeft = 0;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft === 0) {
+        return;
+    }
   };
 
   const scrollOtherWorksRight = () => {
     const container = otherWorkExperienceRef.current;
     if (!container) return;
 
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
-      return;
-    }
-
     pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    const card = container.querySelector('[data-other-card]');
-    const cardWidth = card?.offsetWidth || 300;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
-    const isMobile = window.innerWidth < 768; // Check if on mobile
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-other-card'));
+    if (cards.length === 0) return;
 
-    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
+    const isMobile = window.innerWidth < 768;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    let targetScrollLeft = maxScrollLeft;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.offsetLeft + card.offsetWidth > container.scrollLeft + container.clientWidth / 2) {
+            if (i === cards.length - 1) {
+                targetScrollLeft = maxScrollLeft;
+            } else {
+                targetScrollLeft = cards[i + 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft < maxScrollLeft) {
+        targetScrollLeft = maxScrollLeft;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft >= maxScrollLeft) {
+        return;
+    }
   };
 
   // Effect for Certifications Carousel
@@ -449,7 +584,7 @@ const App = () => {
       stopCertAutomaticScrolling(); // Cleanup on unmount
       container.removeEventListener('mousedown', mouseDownCert);
       container.removeEventListener('mouseleave', mouseLeaveCert);
-      container.removeEventListener('mouseup', mouseMoveCert);
+      container.removeEventListener('mouseup', mouseUpCert);
       container.removeEventListener('mousemove', mouseMoveCert);
     };
   }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state for consistent behavior
