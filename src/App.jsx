@@ -777,24 +777,27 @@ const App = () => {
 
       {/* Intro Section */}
       <section className="relative bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-24 md:py-25 pt-24 pb-14">
-        <div className="container ml-14 mx-auto px-4 pt-10 flex flex-col md:flex-row items-center md:justify-center"> {/* Added justify-center for horizontal centering */}
-          <div className="mb-8 md:mb-0 md:mr-8 flex-shrink-0"> {/* Image holder */}
+        {/* Container for the entire intro content */}
+        <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-center"> {/* Removed ml-14 */}
+          {/* Image holder */}
+          <div className="mb-8 md:mb-0 md:mr-8 flex-shrink-0">
             <img
               src="https://placehold.co/200x200/FFFFFF/000000?text=Profile" // Placeholder image
               alt="Profile Picture"
               className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
             />
           </div>
-          <div className="text-left"> {/* Text content - changed from text-center md:text-left to just text-left */}
-            <h1 className="ml-5 text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+          {/* Text content */}
+          <div className="text-left"> {/* Text content - remains text-left */}
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up"> {/* Removed ml-5 */}
               Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
             </h1>
-            <p className="ml-5 text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
+            <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4"> {/* Removed ml-5 */}
               A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
             </p>
             <button
               onClick={() => scrollToSection('about')}
-              className="ml-5 bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400"
+              className="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400" // Removed ml-5
             >
               More About Me
             </button>
