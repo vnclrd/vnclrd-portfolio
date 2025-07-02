@@ -5,7 +5,7 @@ const App = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const projectsContainerRef = useRef(null);
   const certificationsContainerRef = useRef(null);
-  const otherWorkExperienceRef = useRef(null);
+  const otherWorkExperienceRef = useRef(null); // Renamed from otherWorkExperienceRef to otherWorksContainerRef for consistency
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -20,6 +20,12 @@ const App = () => {
   const certScrollIntervalRef = useRef(null);
   const certScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
   const certScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
+
+  // Refs for Other Work Experience carousel automatic scrolling
+  const otherWorkScrollIntervalRef = useRef(null);
+  const otherWorkScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
+  const otherWorkScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
+
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -247,8 +253,78 @@ const App = () => {
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
+  // --- Other Work Experience Carousel Logic ---
+  const startOtherWorkAutomaticScrolling = () => {
+    const container = otherWorkExperienceRef.current;
+    if (!container || otherWorkScrollPausedRef.current) return;
 
-  // Unified mouse drag handling for both carousels
+    const scrollSpeed = 1; // Speed of the scroll
+    const intervalTime = 20; // Interval for updating scroll position
+    const card = container.querySelector('[data-other-card]');
+    const cardWidth = card?.offsetWidth || 300;
+    const gap = 24;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    if (otherWorkScrollIntervalRef.current) {
+      clearInterval(otherWorkScrollIntervalRef.current);
+    }
+
+    otherWorkScrollIntervalRef.current = setInterval(() => {
+      if (!container) return;
+
+      if (otherWorkScrollDirectionRef.current === 'forward') {
+        container.scrollLeft += scrollSpeed;
+
+        if (container.scrollLeft >= maxScrollLeft) {
+          clearInterval(otherWorkScrollIntervalRef.current);
+          otherWorkScrollIntervalRef.current = null;
+          otherWorkScrollPausedRef.current = true;
+
+          setTimeout(() => {
+            otherWorkScrollDirectionRef.current = 'backward';
+            otherWorkScrollPausedRef.current = false;
+            startOtherWorkAutomaticScrolling();
+          }, 5000);
+        }
+
+      } else { // Scrolling backward
+        container.scrollLeft -= scrollSpeed;
+
+        if (container.scrollLeft <= 0) {
+          clearInterval(otherWorkScrollIntervalRef.current);
+          otherWorkScrollIntervalRef.current = null;
+          otherWorkScrollPausedRef.current = true;
+
+          setTimeout(() => {
+            otherWorkScrollDirectionRef.current = 'forward';
+            otherWorkScrollPausedRef.current = false;
+            startOtherWorkAutomaticScrolling();
+          }, 5000);
+        }
+      }
+    }, intervalTime);
+  };
+
+  const stopOtherWorkAutomaticScrolling = () => {
+    if (otherWorkScrollIntervalRef.current) {
+      clearInterval(otherWorkScrollIntervalRef.current);
+      otherWorkScrollIntervalRef.current = null;
+    }
+  };
+
+  let otherWorkResumeScrollTimeout = null;
+  const pauseOtherWorkAutoScrollTemporarily = () => {
+    stopOtherWorkAutomaticScrolling();
+    if (otherWorkResumeScrollTimeout) {
+      clearTimeout(otherWorkResumeScrollTimeout);
+    }
+    otherWorkResumeScrollTimeout = setTimeout(() => {
+      startOtherWorkAutomaticScrolling();
+    }, 5000);
+  };
+
+
+  // Unified mouse drag handling for all carousels
   const handleMouseDown = (e, containerRef, startAutoScrollFn, stopAutoScrollFn) => {
     const container = containerRef.current;
     if (!container) return;
@@ -291,23 +367,29 @@ const App = () => {
   };
 
   const scrollOtherWorksLeft = () => {
-    const container = otherWorksContainerRef.current;
+    const container = otherWorkExperienceRef.current;
     if (!container) return;
+
+    pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
     const card = container.querySelector('[data-other-card]');
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
-    container.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+    const scrollAmount = cardWidth + gap;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   };
 
   const scrollOtherWorksRight = () => {
-    const container = otherWorksContainerRef.current;
+    const container = otherWorkExperienceRef.current;
     if (!container) return;
+
+    pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
     const card = container.querySelector('[data-other-card]');
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
-    container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+    const scrollAmount = cardWidth + gap;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   // Effect for Certifications Carousel
@@ -363,6 +445,33 @@ const App = () => {
       container.removeEventListener('mousemove', mouseMoveProject);
     };
   }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state
+
+  // Effect for Other Work Experience Carousel
+  useEffect(() => {
+    const container = otherWorkExperienceRef.current;
+    if (!container) return;
+
+    startOtherWorkAutomaticScrolling(); // Start automatic scrolling
+
+    // Event listeners for dragging
+    const mouseDownOtherWork = (e) => handleMouseDown(e, otherWorkExperienceRef, startOtherWorkAutomaticScrolling, stopOtherWorkAutomaticScrolling);
+    const mouseLeaveOtherWork = () => handleMouseLeave(otherWorkExperienceRef, startOtherWorkAutomaticScrolling);
+    const mouseUpOtherWork = () => handleMouseUp(otherWorkExperienceRef, startOtherWorkAutomaticScrolling);
+    const mouseMoveOtherWork = (e) => handleMouseMove(e, otherWorkExperienceRef);
+
+    container.addEventListener('mousedown', mouseDownOtherWork);
+    container.addEventListener('mouseleave', mouseLeaveOtherWork);
+    container.addEventListener('mouseup', mouseUpOtherWork);
+    container.addEventListener('mousemove', mouseMoveOtherWork);
+
+    return () => {
+      stopOtherWorkAutomaticScrolling(); // Cleanup on unmount
+      container.removeEventListener('mousedown', mouseDownOtherWork);
+      container.removeEventListener('mouseleave', mouseLeaveOtherWork);
+      container.removeEventListener('mouseup', mouseUpOtherWork);
+      container.removeEventListener('mousemove', mouseMoveOtherWork);
+    };
+  }, [isDragging, startX, scrollLeftStart]);
 
 
   const skills = {
@@ -478,6 +587,27 @@ const App = () => {
       company: 'Volunteer Work',
       years: '2021',
       description: 'Designed and developed a simple informational website for a local non-profit organization to establish their online presence and provide contact information to the community.',
+    },
+    {
+      id: 'other-4',
+      title: 'Mobile Game Prototype',
+      company: 'Personal Project',
+      years: '2020',
+      description: 'Developed a basic mobile game prototype using Unity, focusing on core gameplay mechanics and simple UI. Explored game design principles and C# scripting.',
+    },
+    {
+      id: 'other-5',
+      title: 'Data Analysis Script',
+      company: 'Academic Project',
+      years: '2020',
+      description: 'Wrote Python scripts to analyze a large dataset for a university project, performing data cleaning, transformation, and visualization to extract meaningful insights.',
+    },
+    {
+      id: 'other-6',
+      title: 'Smart Home Automation Concept',
+      company: 'Concept Design',
+      years: '2019',
+      description: 'Explored concepts for a smart home automation system, including device integration, user interface design, and potential security considerations. Created mockups and flowcharts.',
     },
   ];
 
@@ -752,20 +882,47 @@ const App = () => {
             ))}
           </div>
 
-          {/* Other Work Experience Section - Now nested inside Work Experience */}
+          {/* Other Work Experience Section - Now a carousel */}
           <div className={`py-12 md:py-12`}>
             <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
               Other Work Experience
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {otherWorks.map((work) => (
-                <div key={work.id} className={`p-5 rounded-xl shadow-md border-b-2 border-orange-500 hover:shadow-lg transition duration-300 transform hover:-translate-y-0.5 ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
-                  <h3 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>{work.title}</h3>
-                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-base mb-1`}>{work.company}</p>
-                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-xs mb-3`}>{work.years}</p>
-                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed text-sm`}>{work.description}</p>
-                </div>
-              ))}
+            <div className="relative flex items-center justify-center shadow-mask">
+              <button
+                onClick={scrollOtherWorksLeft}
+                className={`absolute left-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-r-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
+                aria-label="Scroll left"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+
+              <div
+                ref={otherWorkExperienceRef}
+                className="other-works-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+              >
+                {otherWorks.map((work, index) => (
+                  <div key={`${work.id}-${index}`} data-other-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-orange-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[300px] md:min-w-[350px] lg:min-w-[400px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+                    <div className="p-6 flex-grow flex flex-col justify-start">
+                      <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>{work.title}</h3>
+                      <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{work.company}</p>
+                      <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm mb-3`}>{work.years}</p>
+                      <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed text-sm`}>{work.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={scrollOtherWorksRight}
+                className={`absolute right-0 z-10 h-full w-40 flex items-center justify-center text-white rounded-l-xl shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-75 ${isDarkMode ? 'bg-indigo-700 hover:bg-indigo-600 focus:ring-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'} opacity-0`}
+                aria-label="Scroll right"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
