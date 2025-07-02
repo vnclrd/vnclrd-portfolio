@@ -137,8 +137,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
+    const isMobile = window.innerWidth < 768; // Check if on mobile
 
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
   const scrollCertificationsRight = () => {
@@ -156,8 +157,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
+    const isMobile = window.innerWidth < 768; // Check if on mobile
 
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
 
@@ -248,8 +250,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 350;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
+    const isMobile = window.innerWidth < 768; // Check if on mobile
 
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
   const scrollProjectsRight = () => {
@@ -267,8 +270,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 350;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
+    const isMobile = window.innerWidth < 768; // Check if on mobile
 
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
   // --- Other Work Experience Carousel Logic ---
@@ -398,7 +402,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    const isMobile = window.innerWidth < 768; // Check if on mobile
+
+    container.scrollBy({ left: -scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
   const scrollOtherWorksRight = () => {
@@ -416,7 +422,9 @@ const App = () => {
     const cardWidth = card?.offsetWidth || 300;
     const gap = 24;
     const scrollAmount = cardWidth + gap;
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    const isMobile = window.innerWidth < 768; // Check if on mobile
+
+    container.scrollBy({ left: scrollAmount, behavior: isMobile ? 'auto' : 'smooth' });
   };
 
   // Effect for Certifications Carousel
@@ -441,7 +449,7 @@ const App = () => {
       stopCertAutomaticScrolling(); // Cleanup on unmount
       container.removeEventListener('mousedown', mouseDownCert);
       container.removeEventListener('mouseleave', mouseLeaveCert);
-      container.removeEventListener('mouseup', mouseUpCert);
+      container.removeEventListener('mouseup', mouseMoveCert);
       container.removeEventListener('mousemove', mouseMoveCert);
     };
   }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state for consistent behavior
@@ -1109,7 +1117,7 @@ const App = () => {
             Check out my GitHub!
           </h2>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              Feel free to check my projects on my GitHub account.
+              Feel free to check my GitHub account.
           </p>
           <div className="flex flex-col items-center space-y-4">
             <a
