@@ -569,45 +569,45 @@ const App = () => {
   const otherWorks = [
     {
       id: 'other-1',
-      title: 'Other 1',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'Personal Blog Site',
+      company: 'Self-Employed',
+      years: '2023',
+      description: 'Developed and maintained a personal blog site to share articles on web development and technology. Implemented features like article categorization, search, and comment section.',
     },
     {
       id: 'other-2',
-      title: 'Other 2',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'E-commerce Redesign Concept',
+      company: 'Freelance Project',
+      years: '2022',
+      description: 'Created a UI/UX redesign concept for an existing e-commerce platform, focusing on improving user flow and visual aesthetics. Utilized Figma for prototyping and wireframing.',
     },
     {
       id: 'other-3',
-      title: 'Other 3',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'Local Business Website',
+      company: 'Volunteer Work',
+      years: '2021',
+      description: 'Designed and developed a simple informational website for a local non-profit organization to establish their online presence and provide contact information to the community.',
     },
     {
       id: 'other-4',
-      title: 'Other 4',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'Mobile Game Prototype',
+      company: 'Personal Project',
+      years: '2020',
+      description: 'Developed a basic mobile game prototype using Unity, focusing on core gameplay mechanics and simple UI. Explored game design principles and C# scripting.',
     },
     {
       id: 'other-5',
-      title: 'Other 5',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'Data Analysis Script',
+      company: 'Academic Project',
+      years: '2020',
+      description: 'Wrote Python scripts to analyze a large dataset for a university project, performing data cleaning, transformation, and visualization to extract meaningful insights.',
     },
     {
       id: 'other-6',
-      title: 'Other 6',
-      company: 'Company',
-      years: 'Month Year',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      title: 'Smart Home Automation Concept',
+      company: 'Concept Design',
+      years: '2019',
+      description: 'Explored concepts for a smart home automation system, including device integration, user interface design, and potential security considerations. Created mockups and flowcharts.',
     },
   ];
 
@@ -777,19 +777,28 @@ const App = () => {
 
       {/* Intro Section */}
       <section className="relative bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-24 md:py-25 pt-24 pb-14">
-        <div className="container mx-auto px-4 text-center pt-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
-            Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
-          </h1>
-          <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
-            A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
-          </p>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400"
-          >
-            More About Me
-          </button>
+        <div className="container ml-14 mx-auto px-4 pt-10 flex flex-col md:flex-row items-center md:justify-center"> {/* Added justify-center for horizontal centering */}
+          <div className="mb-8 md:mb-0 md:mr-8 flex-shrink-0"> {/* Image holder */}
+            <img
+              src="https://placehold.co/200x200/FFFFFF/000000?text=Profile" // Placeholder image
+              alt="Profile Picture"
+              className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
+            />
+          </div>
+          <div className="text-left"> {/* Text content - changed from text-center md:text-left to just text-left */}
+            <h1 className="ml-5 text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+              Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
+            </h1>
+            <p className="ml-5 text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
+              A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
+            </p>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="ml-5 bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400"
+            >
+              More About Me
+            </button>
+          </div>
         </div>
       </section>
 
