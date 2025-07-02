@@ -559,9 +559,9 @@ const App = () => {
       <header className={`fixed w-full z-50 ${isDarkMode ? 'bg-gray-800 shadow-lg' : 'bg-white shadow-md'}`}>
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo/Name */}
-          <a href="#" className={`text-2xl font-bold ${isDarkMode ? 'text-indigo-400' : 'text-indigo-700'} rounded-md p-2 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-indigo-50'} transition duration-300`}>
+          <button onClick={scrollToTop} className={`text-2xl font-bold ${isDarkMode ? 'text-indigo-400' : 'text-indigo-700'} rounded-md p-2 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-indigo-50'} transition duration-300`}>
             Miguel Ivan Calarde
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6">
