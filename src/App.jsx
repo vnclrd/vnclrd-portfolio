@@ -3,23 +3,23 @@ import React, { useState, useEffect, useRef } from 'react';
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
-  const certificationsContainerRef = useRef(null);
   const projectsContainerRef = useRef(null);
+  const certificationsContainerRef = useRef(null);
+  const otherWorkExperienceRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftStart, setScrollLeftStart] = useState(0);
-
-  // Refs for Certifications carousel automatic scrolling
-  const certScrollIntervalRef = useRef(null);
-  const certScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
-  const certScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
 
   // Refs for Projects carousel automatic scrolling
   const projectScrollIntervalRef = useRef(null);
   const projectScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
   const projectScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.e., on manual scroll)
 
+  // Refs for Certifications carousel automatic scrolling
+  const certScrollIntervalRef = useRef(null);
+  const certScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
+  const certScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -290,6 +290,25 @@ const App = () => {
     container.scrollLeft = scrollLeftStart - walk;
   };
 
+  const scrollOtherWorksLeft = () => {
+    const container = otherWorksContainerRef.current;
+    if (!container) return;
+
+    const card = container.querySelector('[data-other-card]');
+    const cardWidth = card?.offsetWidth || 300;
+    const gap = 24;
+    container.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+  };
+
+  const scrollOtherWorksRight = () => {
+    const container = otherWorksContainerRef.current;
+    if (!container) return;
+
+    const card = container.querySelector('[data-other-card]');
+    const cardWidth = card?.offsetWidth || 300;
+    const gap = 24;
+    container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+  };
 
   // Effect for Certifications Carousel
   useEffect(() => {
@@ -436,6 +455,30 @@ const App = () => {
       years: 'June 2023 - October 2024',
       description: 'Developed and designed user-facing features, applying logical reasoning to effectively solve problems, while consistently demonstrating initiative, a strong work ethic, and timely task completion; throughout the role, was trusted with confidential information and remained resilient and reliable, particularly in high-pressure and critical situations.'
     }
+  ];
+
+  const otherWorks = [
+    {
+      id: 'other-1',
+      title: 'Personal Blog Site',
+      company: 'Self-Employed',
+      years: '2023',
+      description: 'Developed and maintained a personal blog site to share articles on web development and technology. Implemented features like article categorization, search, and comment section.',
+    },
+    {
+      id: 'other-2',
+      title: 'E-commerce Redesign Concept',
+      company: 'Freelance Project',
+      years: '2022',
+      description: 'Created a UI/UX redesign concept for an existing e-commerce platform, focusing on improving user flow and visual aesthetics. Utilized Figma for prototyping and wireframing.',
+    },
+    {
+      id: 'other-3',
+      title: 'Local Business Website',
+      company: 'Volunteer Work',
+      years: '2021',
+      description: 'Designed and developed a simple informational website for a local non-profit organization to establish their online presence and provide contact information to the community.',
+    },
   ];
 
   const education = [
@@ -707,6 +750,23 @@ const App = () => {
                 <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>{job.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* Other Work Experience Section - Now nested inside Work Experience */}
+          <div className={`py-12 md:py-12`}>
+            <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
+              Other Work Experience
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {otherWorks.map((work) => (
+                <div key={work.id} className={`p-5 rounded-xl shadow-md border-b-2 border-orange-500 hover:shadow-lg transition duration-300 transform hover:-translate-y-0.5 ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+                  <h3 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>{work.title}</h3>
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-base mb-1`}>{work.company}</p>
+                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-xs mb-3`}>{work.years}</p>
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed text-sm`}>{work.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
