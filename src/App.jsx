@@ -127,6 +127,10 @@ const App = () => {
     const container = certificationsContainerRef.current;
     if (!container) return;
 
+    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
+      return;
+    }
+
     pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
     const card = container.querySelector('[data-cert-card]');
@@ -140,6 +144,11 @@ const App = () => {
   const scrollCertificationsRight = () => {
     const container = certificationsContainerRef.current;
     if (!container) return;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
+      return;
+    }
 
     pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
@@ -229,6 +238,10 @@ const App = () => {
     const container = projectsContainerRef.current;
     if (!container) return;
 
+    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
+      return;
+    }
+
     pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
     const card = container.querySelector('[data-project-card]');
@@ -242,6 +255,11 @@ const App = () => {
   const scrollProjectsRight = () => {
     const container = projectsContainerRef.current;
     if (!container) return;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
+      return;
+    }
 
     pauseProjectAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
@@ -370,6 +388,10 @@ const App = () => {
     const container = otherWorkExperienceRef.current;
     if (!container) return;
 
+    if (container.scrollLeft === 0) { // If already at the beginning, do not scroll
+      return;
+    }
+
     pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
     const card = container.querySelector('[data-other-card]');
@@ -382,6 +404,11 @@ const App = () => {
   const scrollOtherWorksRight = () => {
     const container = otherWorkExperienceRef.current;
     if (!container) return;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    if (container.scrollLeft >= maxScrollLeft) { // If already at the end, do not scroll
+      return;
+    }
 
     pauseOtherWorkAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
@@ -778,7 +805,7 @@ const App = () => {
       {/* Intro Section */}
       <section className="relative bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-24 md:py-25 pt-24 pb-14">
         {/* Container for the entire intro content */}
-        <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-center"> {/* Removed ml-14 */}
+        <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-center">
           {/* Image holder */}
           <div className="mb-8 md:mb-0 md:mr-8 flex-shrink-0">
             <img
@@ -788,16 +815,16 @@ const App = () => {
             />
           </div>
           {/* Text content */}
-          <div className="text-left"> {/* Text content - remains text-left */}
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up"> {/* Removed ml-5 */}
+          <div className="text-left">
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
               Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
             </h1>
-            <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4"> {/* Removed ml-5 */}
+            <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
               A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
             </p>
             <button
               onClick={() => scrollToSection('about')}
-              className="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400" // Removed ml-5
+              className="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400"
             >
               More About Me
             </button>
