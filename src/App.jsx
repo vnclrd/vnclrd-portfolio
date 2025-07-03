@@ -700,7 +700,7 @@ const App = () => {
     {
       id: 'project-3',
       category: 'Web Development',
-      title: 'Portfolio Website',
+      title: 'My Portfolio Website',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Portfolio+Website',
@@ -709,9 +709,9 @@ const App = () => {
     {
       id: 'project-4',
       category: 'Category 1',
-      title: 'Project 4',
+      title: "Mama Susan's Website",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      technologies: ['', '', ''],
+      technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Project+4',
       link: '#',
     },
