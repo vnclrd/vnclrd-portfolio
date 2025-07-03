@@ -950,7 +950,7 @@ const App = () => {
         {/* Container for the entire intro content */}
         <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-center">
           {/* Image holder */}
-          <div className="mb-8 md:mb-0 md:mr-8 flex-shrink-0">
+          <div className="ml-6 pr-8 mb-8 md:mb-0 md:mr-8 flex-shrink-0">
             <img
               src="https://placehold.co/200x200/FFFFFF/000000?text=Profile" // Placeholder image
               alt="Profile Picture"
