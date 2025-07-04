@@ -783,10 +783,10 @@ const App = () => {
       years: '2023 - 2025',
       description: 'Collaborated directly with a Philippine National Karate Team member to facilitate the successful execution of specialized karate seminars. Responsibilities included equipment management, demonstration support, and general logistical coordination to ensure a productive learning environment.',
       images: [
-        'https://placehold.co/60x60/FFD1DD/000000?text=KS1',
-        'https://placehold.co/60x60/FFD1DD/000000?text=KS2',
-        'https://placehold.co/60x60/FFD1DD/000000?text=KS3',
-        'https://placehold.co/60x60/FFD1DD/000000?text=KS4',
+        'images/other/ksa-1.webp',
+        'images/other/ksa-2.webp',
+        'images/other/ksa-3.webp',
+        'images/other/ksa-4.webp',
       ]
     },
     {
@@ -871,7 +871,7 @@ const App = () => {
       name: 'Operating Systems and You: Becoming a Power User',
       issuer: 'Google (via Coursera)',
       date: 'Month 2023',
-      description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux. ',
+      description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux.',
       credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
       imageUrl: 'images/cert-3.webp'
     },
