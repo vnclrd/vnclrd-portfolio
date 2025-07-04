@@ -685,7 +685,7 @@ const App = () => {
       title: 'InstaPrint Web UI',
       description: 'InstaPrint is a printing solution that helps address the need for a more convenient and efficient way of printing while having a user-friendly interface designed to make the device easier.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Python (Flask)', 'MySQL', 'Bootstrap', 'Arduino IDE'],
-      imageUrl: 'images/proj-1.webp',
+      imageUrl: 'images/projects/proj-1.webp',
       link: '#',
     },
     {
@@ -694,7 +694,7 @@ const App = () => {
       title: 'ShouldU',
       description: 'ShouldU is a simple and straightforward application that helps you make up your mind on something you want to do. It summarizes all related information that you give to the application with simple questions that can be easily answered.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Apache Cordova'],
-      imageUrl: 'images/proj-2.webp',
+      imageUrl: 'images/projects/proj-2.webp',
       link: '#',
     },
     {
@@ -744,10 +744,10 @@ const App = () => {
       years: '2023 - Present',
       description: "As a Volunteer Graphic Designer for the PUP Karatedo Team, I create all publication materials, including posters for every team achievement and announcement posts for tryouts and events. I also design the team's official shirts, contributing significantly to their visual identity and public presence.",
       images: [
-        'images/other/gd-1.webp',
-        'images/other/gd-2.webp',
-        'images/other/gd-3.webp',
-        'images/other/gd-4.webp',
+        'images/other-work-experience/gd-1.webp',
+        'images/other-work-experience/gd-2.webp',
+        'images/other-work-experience/gd-3.webp',
+        'images/other-work-experience/gd-4.webp',
       ]
     },
     {
@@ -757,10 +757,10 @@ const App = () => {
       years: '2023 - Present',
       description: "Responsible for the strategic management and content creation for the PUP Karatedo Team's official Facebook Page and Instagram Account. Successfully disseminated crucial announcements, event details, and team updates, fostering engagement within the university community and beyond.",
       images: [
-        'images/other/smm-1.webp',
-        'images/other/smm-2.webp',
-        'images/other/smm-3.webp',
-        'images/other/smm-4.webp',
+        'images/other-work-experience/smm-1.webp',
+        'images/other-work-experience/smm-2.webp',
+        'images/other-work-experience/smm-3.webp',
+        'images/other-work-experience/smm-4.webp',
       ]
     },
     {
@@ -770,10 +770,10 @@ const App = () => {
       years: '2023 - Present',
       description: 'Collaborated with multiple organizing committees to facilitate the smooth execution of karate tournaments. Responsibilities included, but were not limited to, competitor coordination, scorekeeping, and venue setup/teardown as needed.',
       images: [
-        'images/other/kts-1.webp',
-        'images/other/kts-2.webp',
-        'images/other/kts-3.webp',
-        'images/other/kts-4.webp',
+        'images/other-work-experience/kts-1.webp',
+        'images/other-work-experience/kts-2.webp',
+        'images/other-work-experience/kts-3.webp',
+        'images/other-work-experience/kts-4.webp',
       ]
     },
     {
@@ -783,10 +783,10 @@ const App = () => {
       years: '2023 - 2025',
       description: 'Collaborated directly with a Philippine National Karate Team member to facilitate the successful execution of specialized karate seminars. Responsibilities included equipment management, demonstration support, and general logistical coordination to ensure a productive learning environment.',
       images: [
-        'images/other/ksa-1.webp',
-        'images/other/ksa-2.webp',
-        'images/other/ksa-3.webp',
-        'images/other/ksa-4.webp',
+        'images/other-work-experience/ksa-1.webp',
+        'images/other-work-experience/ksa-2.webp',
+        'images/other-work-experience/ksa-3.webp',
+        'images/other-work-experience/ksa-4.webp',
       ]
     },
     {
@@ -796,10 +796,10 @@ const App = () => {
       years: '2021 - 2022',
       description: 'Established and managed a freelance portrait art service during the pandemic, successfully taking commissions to provide personalized artwork for clients. Demonstrated adaptability in a challenging economic climate.',
       images: [
-        'images/other/pa-1.webp',
-        'images/other/pa-2.webp',
-        'images/other/pa-3.webp',
-        'images/other/pa-4.webp',
+        'images/other-work-experience/pa-1.webp',
+        'images/other-work-experience/pa-2.webp',
+        'images/other-work-experience/pa-3.webp',
+        'images/other-work-experience/pa-4.webp',
       ]
     },
     {
@@ -809,10 +809,10 @@ const App = () => {
       years: '2020 - 2022',
       description: 'Provided bespoke NFT art to a diverse clientele, specifically tailoring creations to meet the requirements for whitelist entry into various NFT projects. Expertly navigated the digital art landscape to deliver high-value, exclusive artwork.',
       images: [
-        'images/other/na-1.webp',
-        'images/other/na-2.webp',
-        'images/other/na-3.webp',
-        'images/other/na-4.webp',
+        'images/other-work-experience/na-1.webp',
+        'images/other-work-experience/na-2.webp',
+        'images/other-work-experience/na-3.webp',
+        'images/other-work-experience/na-4.webp',
       ]
     },
     {
@@ -849,7 +849,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduces the core concepts of UX design and the design process, emphasizing user-centered design and accessibility. It prepares learners for entry-level UX design roles by covering topics like user research, wireframing, prototyping, and testing.',
       credentialUrl: 'https://coursera.org/share/397318c8ef04f3d78f79e2dc79d417cb',
-      imageUrl: 'images/cert-1.webp'
+      imageUrl: 'images/certificates/cert-1.webp'
     },
     {
       id: 'cert-2',
@@ -858,7 +858,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course designed to provide a comprehensive overview of computer networking. It covers fundamental concepts of modern networking technologies and protocols, including cloud computing and practical applications for IT professionals.',
       credentialUrl: 'https://coursera.org/share/3de7f88ecd9e24321cae729a45f5c8ff',
-      imageUrl: 'images/cert-2.webp'
+      imageUrl: 'images/certificates/cert-2.webp'
     },
     {
       id: 'cert-3',
@@ -867,7 +867,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux.',
       credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
-      imageUrl: 'images/cert-3.webp'
+      imageUrl: 'images/certificates/cert-3.webp'
     },
     {
       id: 'cert-4',
@@ -876,7 +876,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Encompass the technical maintenance, refinement, and smooth running of computer systems and networks within an organization, ensuring they function effectively and safely. This includes managing servers, cloud resources, user information, and productivity, as well as disaster recovery planning.',
       credentialUrl: 'https://coursera.org/share/7a625b42aac4a37b7ea962fa41b18823',
-      imageUrl: 'images/cert-4.webp'
+      imageUrl: 'images/certificates/cert-4.webp'
     },
     {
       id: 'cert-5',
@@ -885,7 +885,7 @@ const App = () => {
       date: 'Month 2023',
       description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       credentialUrl: 'https://coursera.org/share/21a31c27ddac9b76446edd246ad43e4a',
-      imageUrl: 'images/cert-5.webp'
+      imageUrl: 'images/certificates/cert-5.webp'
     },
     {
       id: 'cert-6',
@@ -893,7 +893,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
-      imageUrl: 'images/cert-6.webp'
+      imageUrl: 'images/certificates/cert-6.webp'
     },
     {
       id: 'cert-7',
@@ -901,7 +901,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
-      imageUrl: 'images/cert-7.webp'
+      imageUrl: 'images/certificates/cert-7.webp'
     },
     {
       id: 'cert-8',
@@ -909,7 +909,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
-      imageUrl: 'images/cert-8.webp'
+      imageUrl: 'images/certificates/cert-8.webp'
     },
     {
       id: 'cert-9',
@@ -917,7 +917,7 @@ const App = () => {
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This beginner-level course is for technical learners in the development and operations domains who are interested in learning the basic concepts of DevOps on AWS. Using discussions, interactive content, and demonstrations, you will learn about culture, practices, and tools used in a DevOps environment. ',
-      imageUrl: 'images/cert-9.webp'
+      imageUrl: 'images/certificates/cert-9.webp'
     },
   ];
 
