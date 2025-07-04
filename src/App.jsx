@@ -770,10 +770,10 @@ const App = () => {
       years: '2023 - Present',
       description: 'Collaborated with multiple organizing committees to facilitate the smooth execution of karate tournaments. Responsibilities included, but were not limited to, competitor coordination, scorekeeping, and venue setup/teardown as needed.',
       images: [
-        'https://placehold.co/60x60/D1DDFF/000000?text=KT1',
-        'https://placehold.co/60x60/D1DDFF/000000?text=KT2',
-        'https://placehold.co/60x60/D1DDFF/000000?text=KT3',
-        'https://placehold.co/60x60/D1DDFF/000000?text=KT4',
+        'images/other/kts-1.webp',
+        'images/other/kts-2.webp',
+        'images/other/kts-3.webp',
+        'images/other/kts-4.webp',
       ]
     },
     {
