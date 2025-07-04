@@ -795,12 +795,6 @@ const App = () => {
       company: 'Jollibee Foods Corporation',
       years: '2018',
       description: 'Developed strong customer service, teamwork, and time management skills in a dynamic retail food environment. Mostly contributed to maintaining a clean and organized workspace and distributed orders to customers.',
-      images: [
-        'https://placehold.co/60x60/DDFFD1/000000?text=SC1',
-        'https://placehold.co/60x60/DDFFD1/000000?text=SC2',
-        'https://placehold.co/60x60/DDFFD1/000000?text=SC3',
-        'https://placehold.co/60x60/DDFFD1/000000?text=SC4',
-      ]
     },
     {
       id: 'other-6',
@@ -809,10 +803,10 @@ const App = () => {
       years: '2021 - 2022',
       description: 'Established and managed a freelance portrait art service during the pandemic, successfully taking commissions to provide personalized artwork for clients. Demonstrated adaptability in a challenging economic climate.',
       images: [
-        'https://placehold.co/60x60/D1FFFF/000000?text=PA1',
-        'https://placehold.co/60x60/D1FFFF/000000?text=PA2',
-        'https://placehold.co/60x60/D1FFFF/000000?text=PA3',
-        'https://placehold.co/60x60/D1FFFF/000000?text=PA4',
+        'images/other/pa-1.webp',
+        'images/other/pa-2.webp',
+        'images/other/pa-3.webp',
+        'images/other/pa-4.webp',
       ]
     },
     {
