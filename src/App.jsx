@@ -1139,6 +1139,7 @@ const App = () => {
                             alt={`${work.title} image ${imgIndex + 1}`}
                             className="w-1/4 h-24 object-cover"
                             onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/60x60/CCCCCC/000000?text=Img`; }}
+                            loading="lazy"
                           />
                         ))}
                       </div>
