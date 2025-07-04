@@ -1125,10 +1125,10 @@ const App = () => {
 
               <div
                 ref={otherWorkExperienceRef}
-                className="other-works-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
+                className="other-works-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10 will-change-scroll"
               >
                 {otherWorks.map((work, index) => (
-                  <div key={`${work.id}-${index}`} data-other-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-orange-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[300px] md:min-w-[350px] lg:min-w-[400px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+                  <div key={`${work.id}-${index}`} data-other-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-orange-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 will-change-transform flex flex-col min-w-[300px] md:min-w-[350px] lg:min-w-[400px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
                     {/* New: Image preview container */}
                     {work.images && work.images.length > 0 && (
                       <div className="flex flex-wrap border-gray-200 dark:border-gray-700">

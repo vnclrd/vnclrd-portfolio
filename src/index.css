@@ -11,3 +11,10 @@
 .certifications-carousel {
   cursor: default !important;
 }
+
+.will-change-scroll {
+  will-change: scroll-position;
+}
+.will-change-transform {
+  will-change: transform;
+}
