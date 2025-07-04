@@ -757,10 +757,10 @@ const App = () => {
       years: '2023 - Present',
       description: "Responsible for the strategic management and content creation for the PUP Karatedo Team's official Facebook Page and Instagram Account. Successfully disseminated crucial announcements, event details, and team updates, fostering engagement within the university community and beyond.",
       images: [
-        'https://placehold.co/60x60/D1FFDD/000000?text=SM1',
-        'https://placehold.co/60x60/D1FFDD/000000?text=SM2',
-        'https://placehold.co/60x60/D1FFDD/000000?text=SM3',
-        'https://placehold.co/60x60/D1FFDD/000000?text=SM4',
+        'images/other/smm-1.webp',
+        'images/other/smm-2.webp',
+        'images/other/smm-3.webp',
+        'images/other/smm-4.webp',
       ]
     },
     {
