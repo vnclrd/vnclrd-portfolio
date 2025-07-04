@@ -816,10 +816,10 @@ const App = () => {
       years: '2020 - 2022',
       description: 'Provided bespoke NFT art to a diverse clientele, specifically tailoring creations to meet the requirements for whitelist entry into various NFT projects. Expertly navigated the digital art landscape to deliver high-value, exclusive artwork.',
       images: [
-        'https://placehold.co/60x60/FFD1FF/000000?text=NA1',
-        'https://placehold.co/60x60/FFD1FF/000000?text=NA2',
-        'https://placehold.co/60x60/FFD1FF/000000?text=NA3',
-        'https://placehold.co/60x60/FFD1FF/000000?text=NA4',
+        'images/other/na-1.webp',
+        'images/other/na-2.webp',
+        'images/other/na-3.webp',
+        'images/other/na-4.webp',
       ]
     },
   ];
