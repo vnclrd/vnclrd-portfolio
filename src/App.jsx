@@ -791,13 +791,6 @@ const App = () => {
     },
     {
       id: 'other-5',
-      title: 'Service Crew',
-      company: 'Jollibee Foods Corporation',
-      years: '2018',
-      description: 'Developed strong customer service, teamwork, and time management skills in a dynamic retail food environment. Mostly contributed to maintaining a clean and organized workspace and distributed orders to customers.',
-    },
-    {
-      id: 'other-6',
       title: 'Portrait Artist',
       company: 'Freelance Work',
       years: '2021 - 2022',
@@ -810,7 +803,7 @@ const App = () => {
       ]
     },
     {
-      id: 'other-7',
+      id: 'other-6',
       title: 'NFT Artist',
       company: 'Freelance Work',
       years: '2020 - 2022',
@@ -821,6 +814,13 @@ const App = () => {
         'images/other/na-3.webp',
         'images/other/na-4.webp',
       ]
+    },
+    {
+      id: 'other-7',
+      title: 'Service Crew',
+      company: 'Jollibee Foods Corporation',
+      years: '2018',
+      description: 'Developed strong customer service, teamwork, and time management skills in a dynamic retail food environment. Mostly contributed to maintaining a clean and organized workspace and distributed orders to customers.',
     },
   ];
 
