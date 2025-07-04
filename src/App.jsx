@@ -744,10 +744,10 @@ const App = () => {
       years: '2023 - Present',
       description: "As a Volunteer Graphic Designer for the PUP Karatedo Team, I create all publication materials, including posters for every team achievement and announcement posts for tryouts and events. I also design the team's official shirts, contributing significantly to their visual identity and public presence.",
       images: [
-        'https://placehold.co/60x60/FFDDC1/000000?text=GD1',
-        'https://placehold.co/60x60/FFDDC1/000000?text=GD2',
-        'https://placehold.co/60x60/FFDDC1/000000?text=GD3',
-        'https://placehold.co/60x60/FFDDC1/000000?text=GD4',
+        'images/other/gd-1.webp',
+        'images/other/gd-2.webp',
+        'images/other/gd-3.webp',
+        'images/other/gd-4.webp',
       ]
     },
     {
