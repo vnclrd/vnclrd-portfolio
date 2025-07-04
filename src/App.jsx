@@ -743,6 +743,12 @@ const App = () => {
       company: 'Volunteer Work',
       years: '2023 - Present',
       description: "As a Volunteer Graphic Designer for the PUP Karatedo Team, I create all publication materials, including posters for every team achievement and announcement posts for tryouts and events. I also design the team's official shirts, contributing significantly to their visual identity and public presence.",
+      images: [
+        'https://placehold.co/60x60/FFDDC1/000000?text=GD1',
+        'https://placehold.co/60x60/FFDDC1/000000?text=GD2',
+        'https://placehold.co/60x60/FFDDC1/000000?text=GD3',
+        'https://placehold.co/60x60/FFDDC1/000000?text=GD4',
+      ]
     },
     {
       id: 'other-2',
@@ -750,6 +756,12 @@ const App = () => {
       company: 'Volunteer Work',
       years: '2023 - Present',
       description: "Responsible for the strategic management and content creation for the PUP Karatedo Team's official Facebook Page and Instagram Account. Successfully disseminated crucial announcements, event details, and team updates, fostering engagement within the university community and beyond.",
+      images: [
+        'https://placehold.co/60x60/D1FFDD/000000?text=SM1',
+        'https://placehold.co/60x60/D1FFDD/000000?text=SM2',
+        'https://placehold.co/60x60/D1FFDD/000000?text=SM3',
+        'https://placehold.co/60x60/D1FFDD/000000?text=SM4',
+      ]
     },
     {
       id: 'other-3',
@@ -757,6 +769,12 @@ const App = () => {
       company: 'Freelance Work',
       years: '2023 - Present',
       description: 'Collaborated with multiple organizing committees to facilitate the smooth execution of karate tournaments. Responsibilities included, but were not limited to, competitor coordination, scorekeeping, and venue setup/teardown as needed.',
+      images: [
+        'https://placehold.co/60x60/D1DDFF/000000?text=KT1',
+        'https://placehold.co/60x60/D1DDFF/000000?text=KT2',
+        'https://placehold.co/60x60/D1DDFF/000000?text=KT3',
+        'https://placehold.co/60x60/D1DDFF/000000?text=KT4',
+      ]
     },
     {
       id: 'other-4',
@@ -764,6 +782,12 @@ const App = () => {
       company: 'Freelance Work',
       years: '2023 - 2025',
       description: 'Collaborated directly with a Philippine National Karate Team member to facilitate the successful execution of specialized karate seminars. Responsibilities included equipment management, demonstration support, and general logistical coordination to ensure a productive learning environment.',
+      images: [
+        'https://placehold.co/60x60/FFD1DD/000000?text=KS1',
+        'https://placehold.co/60x60/FFD1DD/000000?text=KS2',
+        'https://placehold.co/60x60/FFD1DD/000000?text=KS3',
+        'https://placehold.co/60x60/FFD1DD/000000?text=KS4',
+      ]
     },
     {
       id: 'other-5',
@@ -771,6 +795,12 @@ const App = () => {
       company: 'Jollibee Foods Corporation',
       years: '2018',
       description: 'Developed strong customer service, teamwork, and time management skills in a dynamic retail food environment. Mostly contributed to maintaining a clean and organized workspace and distributed orders to customers.',
+      images: [
+        'https://placehold.co/60x60/DDFFD1/000000?text=SC1',
+        'https://placehold.co/60x60/DDFFD1/000000?text=SC2',
+        'https://placehold.co/60x60/DDFFD1/000000?text=SC3',
+        'https://placehold.co/60x60/DDFFD1/000000?text=SC4',
+      ]
     },
     {
       id: 'other-6',
@@ -778,6 +808,12 @@ const App = () => {
       company: 'Freelance Work',
       years: '2021 - 2022',
       description: 'Established and managed a freelance portrait art service during the pandemic, successfully taking commissions to provide personalized artwork for clients. Demonstrated adaptability in a challenging economic climate.',
+      images: [
+        'https://placehold.co/60x60/D1FFFF/000000?text=PA1',
+        'https://placehold.co/60x60/D1FFFF/000000?text=PA2',
+        'https://placehold.co/60x60/D1FFFF/000000?text=PA3',
+        'https://placehold.co/60x60/D1FFFF/000000?text=PA4',
+      ]
     },
     {
       id: 'other-7',
@@ -785,6 +821,12 @@ const App = () => {
       company: 'Freelance Work',
       years: '2020 - 2022',
       description: 'Provided bespoke NFT art to a diverse clientele, specifically tailoring creations to meet the requirements for whitelist entry into various NFT projects. Expertly navigated the digital art landscape to deliver high-value, exclusive artwork.',
+      images: [
+        'https://placehold.co/60x60/FFD1FF/000000?text=NA1',
+        'https://placehold.co/60x60/FFD1FF/000000?text=NA2',
+        'https://placehold.co/60x60/FFD1FF/000000?text=NA3',
+        'https://placehold.co/60x60/FFD1FF/000000?text=NA4',
+      ]
     },
   ];
 
@@ -959,7 +1001,7 @@ const App = () => {
           {/* Image holder */}
           <div className="ml-6 pr-8 mb-8 md:mb-0 md:mr-8 flex-shrink-0">
             <img
-              src="https://placehold.co/200x200/FFFFFF/000000?text=Profile" // Placeholder image
+              src="https://placehold.co/200x200/FFFFFF/000000?text=Profile"
               alt="Profile Picture"
               className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
             />
@@ -1071,7 +1113,7 @@ const App = () => {
             ))}
           </div>
 
-          {/* Other Work Experience Section - Now a carousel */}
+          {/* Other Work Experience Section */}
           <div className={`py-12 md:py-12`}>
             <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
               Other Work Experience
@@ -1093,6 +1135,20 @@ const App = () => {
               >
                 {otherWorks.map((work, index) => (
                   <div key={`${work.id}-${index}`} data-other-card className={`rounded-xl shadow-lg overflow-hidden border-b-4 border-orange-500 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 flex flex-col min-w-[300px] md:min-w-[350px] lg:min-w-[400px] ${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'}`}>
+                    {/* New: Image preview container */}
+                    {work.images && work.images.length > 0 && (
+                      <div className="flex flex-wrap border-gray-200 dark:border-gray-700">
+                        {work.images.slice(0, 4).map((image, imgIndex) => (
+                          <img
+                            key={imgIndex}
+                            src={image}
+                            alt={`${work.title} image ${imgIndex + 1}`}
+                            className="w-1/4 h-24 object-cover"
+                            onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/60x60/CCCCCC/000000?text=Img`; }}
+                          />
+                        ))}
+                      </div>
+                    )}
                     <div className="p-6 flex-grow flex flex-col justify-start">
                       <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'}`}>{work.title}</h3>
                       <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{work.company}</p>
@@ -1185,7 +1241,6 @@ const App = () => {
             ref={certificationsContainerRef}
             className="certifications-carousel flex space-x-6 overflow-x-auto pb-4 scroll-smooth hide-scrollbar py-1 pb-10"
 
-            // Removed onMouseEnter and onMouseLeave to disable pause on hover
           >
             {/* Use displayCertifications for uniformity */}
             {displayCertifications.map((cert, index) => (
@@ -1196,12 +1251,11 @@ const App = () => {
                   className="w-full h-32 object-cover object-top rounded-t-xl"
                   onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/150x100/CCCCCC/000000?text=Cert+Image`; }}
                 />
-                <div className="p-6 flex-grow flex flex-col justify-start"> {/* Align items to the start */}
-                  <div className="min-h-[140px] flex flex-col justify-start text-left"> {/* Fixed height for content area */}
+                <div className="p-6 flex-grow flex flex-col justify-start">
+                  <div className="min-h-[140px] flex flex-col justify-start text-left">
                     <h3 className={`text-xl font-semibold mb-1 ${isDarkMode ? 'text-green-400' : 'text-green-700'} line-clamp-2`}>{cert.name}</h3>
                     <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-lg mb-1`}>{cert.issuer}</p>
                     <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm mb-3`}>{cert.date}</p>
-                    {/* Applying line-clamp to limit description lines and ensure uniformity */}
                     <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed text-sm line-clamp-5 pb-8`}>{cert.description}</p>
                   </div>
                   {cert.credentialUrl && (
