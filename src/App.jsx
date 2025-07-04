@@ -995,7 +995,7 @@ const App = () => {
           {/* Image holder */}
           <div className="ml-6 pr-8 mb-8 md:mb-0 md:mr-8 flex-shrink-0">
             <img
-              src="https://placehold.co/200x200/FFFFFF/000000?text=Profile"
+              src="images/profile-picture.webp"
               alt="Profile Picture"
               className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
             />
