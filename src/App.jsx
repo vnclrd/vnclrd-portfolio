@@ -1308,7 +1308,7 @@ const App = () => {
             Check out my GitHub!
           </h2>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              Feel free to check my GitHub account.
+              Feel free to check my GitHub account to view my projects.
           </p>
           <div className="flex flex-col items-center space-y-4">
             <a
