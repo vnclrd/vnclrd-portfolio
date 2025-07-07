@@ -1318,6 +1318,13 @@ const App = () => {
               className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
               Visit GitHub
             </a>
+            <a
+              href="https://github.com/vnclrd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+              Email Me
+            </a>
           </div>
         </div>
       </section>
