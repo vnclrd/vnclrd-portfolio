@@ -458,7 +458,7 @@ const App = () => {
 
     if (isDragging) {
       setIsDragging(false);
-      startAutoScrollFn(); // Resume automatic scrolling for the specific carousel
+      startAutoScrollFn();
     }
   };
 
