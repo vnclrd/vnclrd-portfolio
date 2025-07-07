@@ -5,7 +5,7 @@ const App = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const projectsContainerRef = useRef(null);
   const certificationsContainerRef = useRef(null);
-  const otherWorkExperienceRef = useRef(null); // Renamed from otherWorkExperienceRef to otherWorksContainerRef for consistency
+  const otherWorkExperienceRef = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
