@@ -741,7 +741,7 @@ const App = () => {
       id: 'other-1',
       title: 'Graphic Designer',
       company: 'Volunteer Work',
-      years: '2023 - Present',
+      years: '2023 - 2025',
       description: "As a Volunteer Graphic Designer for the PUP Karatedo Team, I create all publication materials, including posters for every team achievement and announcement posts for tryouts and events. I also design the team's official shirts, contributing significantly to their visual identity and public presence.",
       images: [
         'images/other-work-experience/gd-1.webp',
@@ -754,7 +754,7 @@ const App = () => {
       id: 'other-2',
       title: 'Social Media Manager',
       company: 'Volunteer Work',
-      years: '2023 - Present',
+      years: '2023 - 2025',
       description: "Responsible for the strategic management and content creation for the PUP Karatedo Team's official Facebook Page and Instagram Account. Successfully disseminated crucial announcements, event details, and team updates, fostering engagement within the university community and beyond.",
       images: [
         'images/other-work-experience/smm-1.webp',
@@ -767,7 +767,7 @@ const App = () => {
       id: 'other-3',
       title: 'Karate Tournament Staff',
       company: 'Freelance Work',
-      years: '2023 - Present',
+      years: '2023 - 2025',
       description: 'Collaborated with multiple organizing committees to facilitate the smooth execution of karate tournaments. Responsibilities included, but were not limited to, competitor coordination, scorekeeping, and venue setup/teardown as needed.',
       images: [
         'images/other-work-experience/kts-1.webp',
@@ -793,7 +793,7 @@ const App = () => {
       id: 'other-5',
       title: 'Portrait Artist',
       company: 'Freelance Work',
-      years: '2021 - 2022',
+      years: '2020 - 2022',
       description: 'Established and managed a freelance portrait art service during the pandemic, successfully taking commissions to provide personalized artwork for clients. Demonstrated adaptability in a challenging economic climate.',
       images: [
         'images/other-work-experience/pa-1.webp',
