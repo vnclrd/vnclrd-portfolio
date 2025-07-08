@@ -889,35 +889,43 @@ const App = () => {
     },
     {
       id: 'cert-6',
-      name: 'Introduction to Database Migration',
-      issuer: 'Amazon Web Services (AWS)',
-      date: 'June 2025',
-      description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
+      name: 'CCNAv7 Switching, Routing, and Wireless Essentials',
+      issuer: 'Cisco Networking Academy',
+      date: 'Month 2024',
+      description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       imageUrl: 'images/certificates/cert-6.webp'
     },
     {
       id: 'cert-7',
-      name: 'Amazon RDS for MariaDB Getting Started',
+      name: 'Introduction to Database Migration',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
+      description: 'Learn how to migrate a production database using the AWS Database Migration Service (AWS DMS) and AWS Schema Conversion Tool (AWS SCT). Be introduced to the full database migration process, from envisioning to post-production support.',
       imageUrl: 'images/certificates/cert-7.webp'
     },
     {
       id: 'cert-8',
-      name: 'Introduction to Responsible AI',
+      name: 'Amazon RDS for MariaDB Getting Started',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
-      description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
+      description: 'Learn the benefits and technical concepts of Amazon RDS for MariaDB. If you are new to the service, learn how to start using Amazon RDS for MariaDB through a demonstration using the AWS Management Console.',
       imageUrl: 'images/certificates/cert-8.webp'
     },
     {
       id: 'cert-9',
+      name: 'Introduction to Responsible AI',
+      issuer: 'Amazon Web Services (AWS)',
+      date: 'June 2025',
+      description: 'This course provides an overview of what responsible AI is and why it is important in the context of generative AI. Responsible AI refers to the development, deployment, and use of AI in an ethical, transparent, fair, and accountable manner.',
+      imageUrl: 'images/certificates/cert-9.webp'
+    },
+    {
+      id: 'cert-10',
       name: 'Getting Started with DevOps on AWS',
       issuer: 'Amazon Web Services (AWS)',
       date: 'June 2025',
       description: 'This beginner-level course is for technical learners in the development and operations domains who are interested in learning the basic concepts of DevOps on AWS. Using discussions, interactive content, and demonstrations, you will learn about culture, practices, and tools used in a DevOps environment. ',
-      imageUrl: 'images/certificates/cert-9.webp'
+      imageUrl: 'images/certificates/cert-10.webp'
     },
   ];
 
