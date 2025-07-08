@@ -846,7 +846,7 @@ const App = () => {
       id: 'cert-1',
       name: 'Foundations of User Experience (UX) Design',
       issuer: 'Google (via Coursera)',
-      date: 'Month 2023',
+      date: 'May 2023',
       description: 'Introduces the core concepts of UX design and the design process, emphasizing user-centered design and accessibility. It prepares learners for entry-level UX design roles by covering topics like user research, wireframing, prototyping, and testing.',
       credentialUrl: 'https://coursera.org/share/397318c8ef04f3d78f79e2dc79d417cb',
       imageUrl: 'images/certificates/cert-1.webp'
@@ -855,7 +855,7 @@ const App = () => {
       id: 'cert-2',
       name: 'The Bits and Bytes of Computer Networking',
       issuer: 'Google (via Coursera)',
-      date: 'Month 2023',
+      date: 'May 2023',
       description: 'A course designed to provide a comprehensive overview of computer networking. It covers fundamental concepts of modern networking technologies and protocols, including cloud computing and practical applications for IT professionals.',
       credentialUrl: 'https://coursera.org/share/3de7f88ecd9e24321cae729a45f5c8ff',
       imageUrl: 'images/certificates/cert-2.webp'
@@ -864,7 +864,7 @@ const App = () => {
       id: 'cert-3',
       name: 'Operating Systems and You: Becoming a Power User',
       issuer: 'Google (via Coursera)',
-      date: 'Month 2023',
+      date: 'June 2023',
       description: 'A course focused on building a foundational understanding of operating systems. The course covers core OS concepts, including hardware and software management, user administration, and file system navigation, primarily using examples from Windows and Linux.',
       credentialUrl: 'https://coursera.org/share/d0720fb588988c944b6420cecd3c8bad',
       imageUrl: 'images/certificates/cert-3.webp'
@@ -873,7 +873,7 @@ const App = () => {
       id: 'cert-4',
       name: 'System Administration and IT Infrastructure Services',
       issuer: 'Google (via Coursera)',
-      date: 'Month 2023',
+      date: 'June 2023',
       description: 'Encompass the technical maintenance, refinement, and smooth running of computer systems and networks within an organization, ensuring they function effectively and safely. This includes managing servers, cloud resources, user information, and productivity, as well as disaster recovery planning.',
       credentialUrl: 'https://coursera.org/share/7a625b42aac4a37b7ea962fa41b18823',
       imageUrl: 'images/certificates/cert-4.webp'
@@ -882,7 +882,7 @@ const App = () => {
       id: 'cert-5',
       name: 'Technical Support Fundamentals',
       issuer: 'Google (via Coursera)',
-      date: 'Month 2023',
+      date: 'March 2023',
       description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       credentialUrl: 'https://coursera.org/share/21a31c27ddac9b76446edd246ad43e4a',
       imageUrl: 'images/certificates/cert-5.webp'
@@ -891,7 +891,7 @@ const App = () => {
       id: 'cert-6',
       name: 'CCNAv7 Switching, Routing, and Wireless Essentials',
       issuer: 'Cisco Networking Academy',
-      date: 'Month 2024',
+      date: 'July 2024',
       description: 'Introduced to the world of Information Technology, or IT. Learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service.',
       imageUrl: 'images/certificates/cert-6.webp'
     },
