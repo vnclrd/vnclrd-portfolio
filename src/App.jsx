@@ -830,14 +830,14 @@ const App = () => {
       degree: 'BS Computer Engineering',
       institution: 'Polytechnic University of the Philippines',
       years: '2021 - 2025',
-      description: 'Specialized in Software Development with a focus on web technologies.',
+      description: 'Majored in Software Development with a focus on web technologies. Developing expertise in hardware-software integration, system design, programming, and problem-solving to build innovative computing solutions.',
     },
     {
       id: 'edu-2',
       degree: 'BS Interior Design',
       institution: 'Polytechnic University of the Philippines',
       years: '2019 - 2021',
-      description: 'My first course in Polytechnic University of the Philippines. Took 2 years of this course before shifting to BS Computer Engineering in 2021.',
+      description: 'Gained foundational skills in design principles, color theory, and visual communication at Polytechnic University of the Philippines, prior to pursuing BS Computer Engineering.',
     },
   ];
 
