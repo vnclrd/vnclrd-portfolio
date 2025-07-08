@@ -1298,13 +1298,13 @@ const App = () => {
             About Me
           </h2>
           <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-4`}>
-            A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
+            I'm a Computer Engineering student with a unique background that blends technical acumen with creative and leadership skills. My foundational experience includes two years in Interior Design at Polytechnic University of the Philippines, where I cultivated a strong eye for detail, design principles, and visual communication. This artistic precision was further refined during the pandemic when I successfully launched a portrait sketching business, showcasing my commitment to meticulous work and high-quality output.
           </p>
           <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed mb-4`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            My dedication extends beyond academics and creative pursuits into the realm of discipline and teamwork. As a Karate practitioner since 2016, I developed strong self-discipline and strategic thinking, culminating in my role as Team Captain of the PUP Karatedo Team in 2023. These experiences have honed my ability to communicate effectively, collaborate seamlessly, and take initiative within a team environment, consistently ensuring tasks are completed efficiently and on schedule.
           </p>
           <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            I am a perfectionist who thrives on continuous learning, often utilizing my free time for self-study to deepen my knowledge and skills. My commitment to health and fitness, through activities like running and training, reflects my overall disciplined approach to life. I am passionate about leveraging my diverse skillset—combining analytical problem-solving with creative insight and strong collaborative abilities—to contribute effectively to innovative projects in the field of computer engineering.
           </p>
         </div>
       </section>
