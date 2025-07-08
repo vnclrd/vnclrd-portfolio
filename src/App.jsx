@@ -1292,109 +1292,105 @@ const App = () => {
       </section>
 
       {/* About Section */}
-<section
-  id="about"
-  className={`container mx-auto px-4 py-12 md:py-12 scroll-mt-[96px] ${
-    isDarkMode ? 'text-gray-200' : 'text-gray-800'
-  }`}
->
-  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
-
-    {/* About Me Content */}
-    <div
-      className={`flex-1 p-8 md:p-10 rounded-xl shadow-lg ${
-        isDarkMode ? 'bg-gray-800' : 'bg-white'
-      }`}
-      id="about-content"
-    >
-      <h2
-        className={`text-3xl md:text-4xl font-bold text-center mb-8 ${
-          isDarkMode ? 'text-white' : 'text-indigo-700'
+      <section
+        id="about"
+        className={`container mx-auto px-4 py-12 md:py-12 scroll-mt-[96px] ${
+          isDarkMode ? 'text-gray-200' : 'text-gray-800'
         }`}
       >
-        About Me
-      </h2>
-      <p
-        className={`${
-          isDarkMode ? 'text-gray-300' : 'text-gray-700'
-        } leading-relaxed mb-4`}
-      >
-        I'm a Computer Engineering student with a unique background that blends
-        technical acumen with creative and leadership skills. My foundational
-        experience includes two years in Interior Design at Polytechnic
-        University of the Philippines, where I cultivated a strong eye for
-        detail, design principles, and visual communication. This artistic
-        precision was further refined during the pandemic when I successfully
-        launched a portrait sketching business, showcasing my commitment to
-        meticulous work and high-quality output.
-      </p>
-      <p
-        className={`${
-          isDarkMode ? 'text-gray-300' : 'text-gray-700'
-        } leading-relaxed mb-4`}
-      >
-        My dedication extends beyond academics and creative pursuits into the
-        realm of discipline and teamwork. As a Karate practitioner since 2016,
-        I developed strong self-discipline and strategic thinking, culminating
-        in my role as Team Captain of the PUP Karatedo Team in 2023. These
-        experiences have honed my ability to communicate effectively, collaborate
-        seamlessly, and take initiative within a team environment, consistently
-        ensuring tasks are completed efficiently and on schedule.
-      </p>
-      <p
-        className={`${
-          isDarkMode ? 'text-gray-300' : 'text-gray-700'
-        } leading-relaxed`}
-      >
-        I am a perfectionist who thrives on continuous learning, often utilizing
-        my free time for self-study to deepen my knowledge and skills. My
-        commitment to health and fitness, through activities like running and
-        training, reflects my overall disciplined approach to life. I am
-        passionate about leveraging my diverse skillset—combining analytical
-        problem-solving with creative insight and strong collaborative
-        abilities—to contribute effectively to innovative projects in the field
-        of computer engineering.
-      </p>
-    </div>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
 
-    {/* Image Collection */}
-  {/* Image Collection */}
-<div className="flex-1 flex flex-col">
-  <div className="grid grid-cols-2 grid-rows-[2fr_2fr_2fr] gap-4 flex-1">
-    {/* Image 1 (Tall left: spans rows 1 and 2 = 4fr) */}
-    <img
-      src="images/about-me/am-1.webp"
-      alt="Miguel Ivan Calarde 1"
-      className="w-full h-full object-cover rounded-lg shadow-md col-start-1 row-span-2"
-    />
+          {/* About Me Content */}
+          <div
+            className={`flex-1 p-8 md:p-10 rounded-xl shadow-lg ${
+              isDarkMode ? 'bg-gray-800' : 'bg-white'
+            }`}
+            id="about-content"
+          >
+            <h2
+              className={`text-3xl md:text-4xl font-bold text-center mb-8 ${
+                isDarkMode ? 'text-white' : 'text-indigo-700'
+              }`}
+            >
+              About Me
+            </h2>
+            <p
+              className={`${
+                isDarkMode ? 'text-gray-300' : 'text-gray-700'
+              } leading-relaxed mb-4`}
+            >
+              I'm a Computer Engineering student with a unique background that blends
+              technical acumen with creative and leadership skills. My foundational
+              experience includes two years in Interior Design at Polytechnic
+              University of the Philippines, where I cultivated a strong eye for
+              detail, design principles, and visual communication. This artistic
+              precision was further refined during the pandemic when I successfully
+              launched a portrait sketching business, showcasing my commitment to
+              meticulous work and high-quality output.
+            </p>
+            <p
+              className={`${
+                isDarkMode ? 'text-gray-300' : 'text-gray-700'
+              } leading-relaxed mb-4`}
+            >
+              My dedication extends beyond academics and creative pursuits into the
+              realm of discipline and teamwork. As a Karate practitioner since 2016,
+              I developed strong self-discipline and strategic thinking, culminating
+              in my role as Team Captain of the PUP Karatedo Team in 2023. These
+              experiences have honed my ability to communicate effectively, collaborate
+              seamlessly, and take initiative within a team environment, consistently
+              ensuring tasks are completed efficiently and on schedule.
+            </p>
+            <p
+              className={`${
+                isDarkMode ? 'text-gray-300' : 'text-gray-700'
+              } leading-relaxed`}
+            >
+              I am a perfectionist who thrives on continuous learning, often utilizing
+              my free time for self-study to deepen my knowledge and skills. My
+              commitment to health and fitness, through activities like running and
+              training, reflects my overall disciplined approach to life. I am
+              passionate about leveraging my diverse skillset—combining analytical
+              problem-solving with creative insight and strong collaborative
+              abilities—to contribute effectively to innovative projects in the field
+              of computer engineering.
+            </p>
+          </div>
 
-    {/* Image 2 (Top right = 2fr) */}
-    <img
-      src="images/about-me/am-2.webp"
-      alt="Miguel Ivan Calarde 2"
-      className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-1"
-    />
+          {/* Image Collection */}
+          <div className="flex-1 flex flex-col">
+            <div className="grid grid-cols-2 grid-rows-[2fr_2fr_2fr] gap-4 flex-1">
+              {/* Image 1 (Tall left: spans rows 1 and 2 = 4fr) */}
+              <img
+                src="images/about-me/am-1.webp"
+                alt="Miguel Ivan Calarde 1"
+                className="w-full h-full object-cover rounded-lg shadow-md col-start-1 row-span-2"
+              />
 
-    {/* Image 3 (Bottom right = 2fr) */}
-    <img
-      src="images/about-me/am-3.webp"
-      alt="Miguel Ivan Calarde 3"
-      className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-2"
-    />
+              {/* Image 2 (Top right = 2fr) */}
+              <img
+                src="images/about-me/am-2.webp"
+                alt="Miguel Ivan Calarde 2"
+                className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-1"
+              />
 
-    {/* Image 4 (Bottom: spans full width = 2fr) */}
-    <img
-      src="images/about-me/am-4.webp"
-      alt="Miguel Ivan Calarde 4"
-      className="w-full h-full object-cover rounded-lg shadow-md col-span-2 row-start-3"
-    />
-  </div>
-</div>
- 
+              {/* Image 3 (Bottom right = 2fr) */}
+              <img
+                src="images/about-me/am-3.webp"
+                alt="Miguel Ivan Calarde 3"
+                className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-2"
+              />
 
-  </div>
-</section>
-
+              {/* Image 4 (Bottom: spans full width = 2fr) */}
+              <img
+                src="images/about-me/am-4.webp"
+                alt="Miguel Ivan Calarde 4"
+                className="w-full h-full object-cover rounded-lg shadow-md col-span-2 row-start-3"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* GitHub Section */}
       <section id="github" className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12 md:py-12 scroll-mt-[96px]">
