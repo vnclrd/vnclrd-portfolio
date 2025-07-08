@@ -1316,7 +1316,7 @@ const App = () => {
             Check out my GitHub!
           </h2>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              Feel free to check my GitHub account to view my projects.
+              Feel free to check my GitHub account.
           </p>
           <div className="flex flex-col items-center space-y-4">
             <a
@@ -1325,13 +1325,6 @@ const App = () => {
               rel="noopener noreferrer"
               className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
               Visit GitHub
-            </a>
-            <a
-              href="https://github.com/vnclrd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
-              Email Me
             </a>
           </div>
         </div>
