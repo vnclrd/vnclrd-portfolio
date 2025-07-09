@@ -841,11 +841,10 @@ const App = () => {
     },
   ];
 
-  /*
   const academicAchievements = [
     {
       id: 'acad-1',
-      achievement: 'Dean's Lister',
+      achievement: "Dean's Lister",
       GPA: 'TBA',
       course: 'BS Computer Engineering',
       yearSem: '4th Year, 2nd Semester',
@@ -853,7 +852,7 @@ const App = () => {
     },
     {
       id: 'acad-2',
-      achievement: 'Dean's Lister',
+      achievement: "Dean's Lister",
       GPA: '1.70',
       course: 'BS Computer Engineering',
       yearSem: '4th Year, 1st Semester',
@@ -861,7 +860,7 @@ const App = () => {
     },
     {
       id: 'acad-3',
-      achievement: 'Dean's Lister',
+      achievement: "Dean's Lister",
       GPA: '1.53',
       course: 'BS Computer Engineering',
       yearSem: '3rd Year, 2nd Semester',
@@ -869,7 +868,7 @@ const App = () => {
     },
     {
       id: 'acad-4',
-      achievement: 'President's Lister',
+      achievement: "President's Lister",
       GPA: '1.45',
       course: 'BS Computer Engineering',
       yearSem: '2nd Year, 1st Semester',
@@ -877,7 +876,7 @@ const App = () => {
     },
     {
       id: 'acad-5',
-      achievement: 'Dean's Lister',
+      achievement: "Dean's Lister",
       GPA: '1.71',
       course: 'BS Computer Engineering',
       yearSem: '1st Year, 1st Semester',
@@ -885,14 +884,13 @@ const App = () => {
     },
     {
       id: 'acad-6',
-      achievement: 'Dean's Lister',
+      achievement: "Dean's Lister",
       GPA: '1.68',
       course: 'BS Interior Design',
       yearSem: '1st Year, 2nd Semester',
       schoolYear: 'SY 2019 - 2020',
     },
   ];
-  */
 
   const certifications = [
     {
