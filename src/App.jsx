@@ -1042,7 +1042,7 @@ const App = () => {
       </header>
 
       {/* Intro Section */}
-      <section className="relative bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-24 md:py-25 pt-24 pb-14">
+      <section className="relative bg-gradient-to-r from-gray-900 to-indigo-900 text-white py-24 md:py-25 pt-24 pb-14">
         {/* Container for the entire intro content */}
         <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-center">
           {/* Image holder */}
