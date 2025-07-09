@@ -847,48 +847,42 @@ const App = () => {
       achievement: "Dean's Lister",
       GPA: 'TBA',
       course: 'BS Computer Engineering',
-      yearSem: '4th Year, 2nd Semester',
-      schoolYear: 'SY 2024 - 2025',
+      yearSemSY: '4th Year, 2nd Semester (SY 2024 - 2025)',
     },
     {
       id: 'acad-2',
       achievement: "Dean's Lister",
       GPA: '1.70',
       course: 'BS Computer Engineering',
-      yearSem: '4th Year, 1st Semester',
-      schoolYear: 'SY 2024 - 2025',
+      yearSemSY: '4th Year, 1st Semester (SY 2024 - 2025)',
     },
     {
       id: 'acad-3',
       achievement: "Dean's Lister",
       GPA: '1.53',
       course: 'BS Computer Engineering',
-      yearSem: '3rd Year, 2nd Semester',
-      schoolYear: 'SY 2024 - 2025',
+      yearSemSY: '3rd Year, 2nd Semester (SY 2024 - 2025)',
     },
     {
       id: 'acad-4',
       achievement: "President's Lister",
       GPA: '1.45',
       course: 'BS Computer Engineering',
-      yearSem: '2nd Year, 1st Semester',
-      schoolYear: 'SY 2022 - 2023',
+      yearSemSY: '2nd Year, 1st Semester (SY 2022 - 2023)',
     },
     {
       id: 'acad-5',
       achievement: "Dean's Lister",
       GPA: '1.71',
       course: 'BS Computer Engineering',
-      yearSem: '1st Year, 1st Semester',
-      schoolYear: 'SY 2021 - 2022',
+      yearSemSY: '1st Year, 1st Semester (SY 2021 - 2022)',
     },
     {
       id: 'acad-6',
       achievement: "Dean's Lister",
       GPA: '1.68',
       course: 'BS Interior Design',
-      yearSem: '1st Year, 2nd Semester',
-      schoolYear: 'SY 2019 - 2020',
+      yearSemSY: '1st Year, 2nd Semester (SY 2019 - 2020)',
     },
   ];
 
@@ -1281,11 +1275,10 @@ const App = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {academicAchievements.map((item) => (
               <div key={item.id} className={`p-4 rounded-lg shadow-md border-b-4 border-yellow-500 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'} transition duration-300 hover:shadow-lg`}>
-                <h4 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{item.achievement}</h4>
-                <p className="text-sm">GPA: {item.GPA}</p>
-                <p className="text-sm">{item.course}</p>
-                <p className="text-sm">{item.yearSem}</p>
-                <p className="text-sm">{item.schoolYear}</p>
+                <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{item.achievement}</h4>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-m`}>{item.course}</p>
+                <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm mb-3 italic`}>GPA: {item.GPA}</p>
+                <p className="text-sm">{item.yearSemSY}</p>
               </div>
             ))}
           </div>
