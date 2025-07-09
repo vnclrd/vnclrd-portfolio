@@ -1221,6 +1221,24 @@ const App = () => {
             ))}
           </div>
         </div>
+        
+        {/* Academic Achievements Section */}
+        <div className="mt-16">
+          <h3 className={`text-2xl md:text-3xl font-bold text-center mb-8 ${isDarkMode ? 'text-white' : 'text-indigo-700'}`}>
+            Academic Achievements
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[...Array(6)].map((_, idx) => (
+              <div key={idx} className={`p-4 rounded-lg shadow-md border-b-4 border-yellow-500 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'} transition duration-300 hover:shadow-lg`}>
+                <h4 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>Dean's Lister</h4>
+                <p className="text-sm">GPA: 1.68</p>
+                <p className="text-sm">BS Interior Design</p>
+                <p className="text-sm">1st Year, 2nd Semester</p>
+                <p className="text-sm">S.Y 2019 - 2020</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Certifications Section */}
