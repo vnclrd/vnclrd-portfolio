@@ -1279,40 +1279,13 @@ const App = () => {
             Academic Achievements
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                title: "Dean's Lister",
-                gpa: "1.68",
-                course: "BS Interior Design",
-                semester: "1st Year, 2nd Semester",
-                sy: "S.Y 2019 - 2020",
-              },
-              {
-                title: "Hehe",
-                gpa: "1.68",
-                course: "BS Interior Design",
-                semester: "1st Year, 2nd Semester",
-                sy: "S.Y 2019 - 2020",
-              }, 
-              {
-
-              },
-              {
-
-              },
-              {
-
-              },
-              {
-
-              }
-            ].map((item, idx) => (
-              <div key={idx} className={`p-4 rounded-lg shadow-md border-b-4 border-yellow-500 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'} transition duration-300 hover:shadow-lg`}>
-                <input className={`text-lg font-semibold mb-1 block w-full bg-transparent focus:outline-none ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} defaultValue={item.title || "Dean's Lister"} />
-                <input className="text-sm block w-full bg-transparent focus:outline-none" defaultValue={`GPA: ${item.gpa || '1.68'}`} />
-                <input className="text-sm block w-full bg-transparent focus:outline-none" defaultValue={item.course || 'BS Interior Design'} />
-                <input className="text-sm block w-full bg-transparent focus:outline-none" defaultValue={item.semester || '1st Year, 2nd Semester'} />
-                <input className="text-sm block w-full bg-transparent focus:outline-none" defaultValue={item.sy || 'S.Y 2019 - 2020'} />
+            {academicAchievements.map((item) => (
+              <div key={item.id} className={`p-4 rounded-lg shadow-md border-b-4 border-yellow-500 ${isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-white text-gray-800'} transition duration-300 hover:shadow-lg`}>
+                <h4 className={`text-lg font-semibold mb-1 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>{item.achievement}</h4>
+                <p className="text-sm">GPA: {item.GPA}</p>
+                <p className="text-sm">{item.course}</p>
+                <p className="text-sm">{item.yearSem}</p>
+                <p className="text-sm">{item.schoolYear}</p>
               </div>
             ))}
           </div>
