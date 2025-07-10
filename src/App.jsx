@@ -1057,7 +1057,7 @@ const App = () => {
             <p className="text-lg md:text-xl opacity-90 animate-fade-in-up delay-200">
               A graduating Computer Engineer student who specializes in System Development
             </p>
-            <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
+            <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200">
               with practical experience in Front-End and Back-End Web Development.
             </p>
             <button
