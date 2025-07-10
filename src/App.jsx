@@ -686,7 +686,6 @@ const App = () => {
       description: 'InstaPrint is a printing solution that helps address the need for a more convenient and efficient way of printing while having a user-friendly interface designed to make the device easier.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Python (Flask)', 'MySQL', 'Bootstrap', 'Arduino IDE'],
       imageUrl: 'images/projects/proj-1.webp',
-      link: '#',
     },
     {
       id: 'project-2',
@@ -695,7 +694,6 @@ const App = () => {
       description: 'ShouldU is a simple and straightforward application that helps you make up your mind on something you want to do. It summarizes all related information that you give to the application with simple questions that can be easily answered.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Apache Cordova'],
       imageUrl: 'images/projects/proj-2.webp',
-      link: '#',
     },
     {
       id: 'project-3',
@@ -704,7 +702,6 @@ const App = () => {
       description: 'My portfolio website contains all of my information of my projects, work experience (and other work experiences), skills, education, and certifications for employers to see.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
       imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Portfolio+Website',
-      link: '#',
     },
     {
       id: 'project-4',
@@ -713,7 +710,6 @@ const App = () => {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
       imageUrl: "https://placehold.co/600x400/FFF0F5/800000?text=Mama+Susan's Website",
-      link: '#',
     },
   ];
 
@@ -1115,17 +1111,6 @@ const App = () => {
                       ))}
                     </div>
                   </div>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-800'} font-semibold transition duration-300 mt-auto`}
-                  >
-                    Learn More
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                  </a>
                 </div>
               </div>
             ))}
