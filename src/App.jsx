@@ -701,7 +701,7 @@ const App = () => {
       title: 'My Portfolio Website (WIP)',
       description: 'My portfolio website contains all of my information of my projects, work experience (and other work experiences), skills, education, and certifications for employers to see.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
-      imageUrl: 'https://placehold.co/600x400/FFF0F5/800000?text=Portfolio+Website',
+      imageUrl: 'images/projects/proj-3.webp',
     },
     {
       id: 'project-4',
