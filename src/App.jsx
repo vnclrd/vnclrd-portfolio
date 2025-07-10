@@ -1347,7 +1347,7 @@ const App = () => {
           isDarkMode ? 'text-gray-200' : 'text-gray-800'
         }`}
       >
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
+        <div className="max-w-2xl mx-auto flex flex-col md:flex-row items-start gap-8">
 
           {/* About Me Content */}
           <div
@@ -1368,69 +1368,35 @@ const App = () => {
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               } leading-relaxed mb-4`}
             >
-              I'm a Computer Engineering student with a unique background that blends
-              technical acumen with creative and leadership skills. My foundational
-              experience includes two years in Interior Design at Polytechnic
-              University of the Philippines, where I cultivated a strong eye for
-              detail, design principles, and visual communication. This artistic
-              precision was further refined during the pandemic when I successfully
-              launched a portrait sketching business, showcasing my commitment to
-              meticulous work and high-quality output.
+              I'm a Computer Engineering student with a unique blend of technical aptitude
+              and creative insight. My foundation includes two years in Interior Design,
+              where I honed a keen eye for detail and design principles. This artistic precision
+              led me to successfully launch a portrait sketching business during the pandemic,
+              underscoring my commitment to meticulous work and high-quality output.
             </p>
             <p
               className={`${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               } leading-relaxed mb-4`}
             >
-              My dedication extends beyond academics and creative pursuits into the
-              realm of discipline and teamwork. As a Karate practitioner since 2016,
-              I developed strong self-discipline and strategic thinking, culminating
-              in my role as Team Captain of the PUP Karatedo Team in 2023. These
-              experiences have honed my ability to communicate effectively, collaborate
-              seamlessly, and take initiative within a team environment, consistently
-              ensuring tasks are completed efficiently and on schedule.
+              My experiences have also cultivated strong leadership and teamwork abilities.
+              As a Karate practitioner since 2016 and Team Captain of the PUP Karatedo Team in
+              2023, I've developed discipline, strategic thinking, and effective communication.
+              These roles have instilled in me a proactive approach to collaboration, ensuring
+              tasks are completed efficiently and on schedule.
             </p>
             <p
               className={`${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               } leading-relaxed`}
             >
-              I am a perfectionist who thrives on continuous learning, often utilizing
-              my free time for self-study to deepen my knowledge and skills. My
-              commitment to health and fitness, through activities like running and
-              training, reflects my overall disciplined approach to life. I am
-              passionate about leveraging my diverse skillset—combining analytical
-              problem-solving with creative insight and strong collaborative
-              abilities—to contribute effectively to innovative projects in the field
-              of computer engineering.
+              I consider myself a perfectionist and am dedicated to continuous learning, often
+              engaging in self-study to expand my knowledge. My commitment to health and fitness
+              through running and training reflects my disciplined nature. I'm eager to apply my
+              diverse skillset—combining analytical problem-solving with creative insight and strong
+              collaborative abilities—to contribute meaningfully to the field of computer engineering.
             </p>
           </div>
-
-          {/* Image Collection */}
-    <div className="flex-1 flex flex-col h-full"> {/* Ensures this container takes full height */}
-      <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full"> {/* Grid with 2 columns and 2 rows, taking full height */}
-        {/* Image 1 (Top-left, takes 50% height of the image collection area) */}
-        <img
-          src="images/about-me/am-1.webp"
-          alt="Miguel Ivan Calarde 1"
-          className="w-full h-full object-cover rounded-lg shadow-md col-start-1 row-start-1"
-        />
-
-        {/* Image 2 (Top-right, takes 50% height of the image collection area) */}
-        <img
-          src="images/about-me/am-2.webp"
-          alt="Miguel Ivan Calarde 2"
-          className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-1"
-        />
-
-        {/* Image 3 (Bottom, landscape, takes 50% height of the image collection area) */}
-        <img
-          src="images/about-me/am-3.webp"
-          alt="Miguel Ivan Calarde 3"
-          className="w-full h-full object-cover rounded-lg shadow-md col-span-2 row-start-2"
-        />
-      </div>
-    </div>
         </div>
       </section>
 
