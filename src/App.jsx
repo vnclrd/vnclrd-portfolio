@@ -1093,7 +1093,7 @@ const App = () => {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-56 object-cover"
+                  className={`w-full h-48 object-cover ${['project-1', 'project-2'].includes(project.id) ? 'object-center' : 'object-top'}`}
                   onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/600x400/CCCCCC/000000?text=Image+Error`; }}
                 />
                 <div className="p-6 flex-grow flex flex-col justify-between">
