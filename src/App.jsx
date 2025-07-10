@@ -709,7 +709,7 @@ const App = () => {
       title: "Mama Susan's Website (WIP)",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Node.js', 'Vite', 'PostCSS', 'Autoprefixer', 'Tailwind CSS'],
-      imageUrl: "https://placehold.co/600x400/FFF0F5/800000?text=Mama+Susan's Website",
+      imageUrl: 'images/projects/proj-4.webp',
     },
   ];
 
@@ -1093,7 +1093,7 @@ const App = () => {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className={`w-full h-48 object-cover ${['project-1', 'project-2'].includes(project.id) ? 'object-center' : 'object-top'}`}
+                  className={`w-full h-48 object-cover ${['project-1', 'project-2', 'project-4'].includes(project.id) ? 'object-center' : 'object-top'}`}
                   onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/600x400/CCCCCC/000000?text=Image+Error`; }}
                 />
                 <div className="p-6 flex-grow flex flex-col justify-between">
