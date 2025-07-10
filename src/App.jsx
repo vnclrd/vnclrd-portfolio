@@ -31,6 +31,9 @@ const App = () => {
   const aboutRef = useRef(null);
   const [aboutHeight, setAboutHeight] = useState(0);
 
+  const imageRefs = useRef([]);
+  const [visibleImages, setVisibleImages] = useState([false, false, false]);
+
   useEffect(() => {
     // Check for user's system preference for dark mode
     const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -48,6 +51,31 @@ const App = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = parseInt(entry.target.dataset.index);
+          if (entry.isIntersecting) {
+            setVisibleImages((prev) => {
+              const updated = [...prev];
+              updated[index] = true;
+              return updated;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    imageRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -1374,62 +1402,61 @@ const App = () => {
             <p className={`${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             } leading-relaxed mb-4`}>
-              I'm a Computer Engineering student with a unique blend of technical aptitude and creative insight. My foundation includes two years in Interior Design, where I honed a keen eye for detail and design principles. This artistic precision led me to successfully launch a portrait sketching business during the pandemic, underscoring my commitment to meticulous work and high-quality output.
+              I'm a Computer Engineering student with a unique blend of technical
+              aptitude and creative insight. My foundation includes two years in
+              Interior Design, where I honed a keen eye for detail and design
+              principles. This artistic precision led me to successfully launch a
+              portrait sketching business during the pandemic, underscoring my
+              commitment to meticulous work and high-quality output.
             </p>
             <p className={`${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             } leading-relaxed mb-4`}>
-              My experiences have also cultivated strong leadership and teamwork abilities. As a Karate practitioner since 2016 and Team Captain of the PUP Karatedo Team in 2023, I've developed discipline, strategic thinking, and effective communication. These roles have instilled in me a proactive approach to collaboration, ensuring tasks are completed efficiently and on schedule.
+              My experiences have also cultivated strong leadership and teamwork
+              abilities. As a Karate practitioner since 2016 and Team Captain of
+              the PUP Karatedo Team in 2023, I've developed discipline, strategic
+              thinking, and effective communication. These roles have instilled
+              in me a proactive approach to collaboration, ensuring tasks are
+              completed efficiently and on schedule.
             </p>
             <p className={`${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             } leading-relaxed`}>
-              I consider myself a perfectionist and am dedicated to continuous learning, often engaging in self-study to expand my knowledge. My commitment to health and fitness through running and training reflects my disciplined nature. I'm eager to apply my diverse skillset—combining analytical problem-solving with creative insight and strong collaborative abilities—to contribute meaningfully to the field of computer engineering.
+              I consider myself a perfectionist and am dedicated to continuous
+              learning, often engaging in self-study to expand my knowledge. My
+              commitment to health and fitness through running and training
+              reflects my disciplined nature. I'm eager to apply my diverse
+              skillset—combining analytical problem-solving with creative insight
+              and strong collaborative abilities—to contribute meaningfully to
+              the field of computer engineering.
             </p>
           </div>
 
           {/* Image Collection */}
           <div className="flex-1" style={{ height: aboutHeight }}>
-            <div
-              className={`grid grid-cols-2 grid-rows-2 gap-4 h-full rounded-xl shadow-lg overflow-hidden ${
-                isDarkMode ? 'bg-gray' : 'bg-white'
-              }`}
-            >
-              {/* Top Left Image */}
-              <div className="overflow-hidden rounded-lg">
-                <div className="w-full h-full">
-                  <img
-                    src="images/about-me/am-1.webp"
-                    alt="Image 1"
-                    className="object-cover w-full h-full rounded-lg"
-                  />
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full">
+              {['am-1.webp', 'am-2.webp', 'am-3.webp'].map((src, index) => (
+                <div
+                  key={index}
+                  className={`${index === 2 ? 'col-span-2' : ''} overflow-hidden rounded-lg`}
+                >
+                  <div className="w-full h-full">
+                    <img
+                      ref={(el) => (imageRefs.current[index] = el)}
+                      data-index={index}
+                      src={`images/about-me/${src}`}
+                      alt={`Image ${index + 1}`}
+                      className={`object-cover w-full h-full rounded-lg transition-opacity duration-1000 ease-out transform ${
+                        visibleImages[index]
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 translate-y-6'
+                      }`}
+                    />
+                  </div>
                 </div>
-              </div>
-
-              {/* Top Right Image */}
-              <div className="overflow-hidden rounded-lg">
-                <div className="w-full h-full">
-                  <img
-                    src="images/about-me/am-2.webp"
-                    alt="Image 2"
-                    className="object-cover w-full h-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              {/* Bottom Full-Width Landscape Image */}
-              <div className="col-span-2 overflow-hidden rounded-lg">
-                <div className="w-full h-full">
-                  <img
-                    src="images/about-me/am-3.webp"
-                    alt="Image 3"
-                    className="object-cover w-full h-full rounded-lg"
-                  />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-
         </div>
       </section>
 
