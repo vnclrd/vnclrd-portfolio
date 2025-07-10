@@ -26,7 +26,6 @@ const App = () => {
   const otherWorkScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
   const otherWorkScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
 
-
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -1408,37 +1407,30 @@ const App = () => {
           </div>
 
           {/* Image Collection */}
-          <div className="flex-1 flex flex-col">
-            <div className="grid grid-cols-2 grid-rows-[2fr_2fr_2fr] gap-4 flex-1">
-              {/* Image 1 (Tall left: spans rows 1 and 2 = 4fr) */}
-              <img
-                src="images/about-me/am-1.webp"
-                alt="Miguel Ivan Calarde 1"
-                className="w-full h-full object-cover rounded-lg shadow-md col-start-1 row-span-2"
-              />
+    <div className="flex-1 flex flex-col h-full"> {/* Ensures this container takes full height */}
+      <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full"> {/* Grid with 2 columns and 2 rows, taking full height */}
+        {/* Image 1 (Top-left, takes 50% height of the image collection area) */}
+        <img
+          src="images/about-me/am-1.webp"
+          alt="Miguel Ivan Calarde 1"
+          className="w-full h-full object-cover rounded-lg shadow-md col-start-1 row-start-1"
+        />
 
-              {/* Image 2 (Top right = 2fr) */}
-              <img
-                src="images/about-me/am-2.webp"
-                alt="Miguel Ivan Calarde 2"
-                className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-1"
-              />
+        {/* Image 2 (Top-right, takes 50% height of the image collection area) */}
+        <img
+          src="images/about-me/am-2.webp"
+          alt="Miguel Ivan Calarde 2"
+          className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-1"
+        />
 
-              {/* Image 3 (Bottom right = 2fr) */}
-              <img
-                src="images/about-me/am-3.webp"
-                alt="Miguel Ivan Calarde 3"
-                className="w-full h-full object-cover rounded-lg shadow-md col-start-2 row-start-2"
-              />
-
-              {/* Image 4 (Bottom: spans full width = 2fr) */}
-              <img
-                src="images/about-me/am-4.webp"
-                alt="Miguel Ivan Calarde 4"
-                className="w-full h-full object-cover rounded-lg shadow-md col-span-2 row-start-3"
-              />
-            </div>
-          </div>
+        {/* Image 3 (Bottom, landscape, takes 50% height of the image collection area) */}
+        <img
+          src="images/about-me/am-3.webp"
+          alt="Miguel Ivan Calarde 3"
+          className="w-full h-full object-cover rounded-lg shadow-md col-span-2 row-start-2"
+        />
+      </div>
+    </div>
         </div>
       </section>
 
