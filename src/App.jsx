@@ -35,6 +35,13 @@ const App = () => {
   const [visibleImages, setVisibleImages] = useState([false, false, false]);
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0); // Scroll to the top
+  }, []);
+
+  useEffect(() => {
     // Check for user's system preference for dark mode
     const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     setIsDarkMode(prefersDarkMode);
