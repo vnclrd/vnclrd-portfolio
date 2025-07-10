@@ -1054,8 +1054,11 @@ const App = () => {
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
               Hello, I'm Miguel <span className="text-green-300">Ivan</span> Calarde
             </h1>
+            <p className="text-lg md:text-xl opacity-90 animate-fade-in-up delay-200">
+              A graduating Computer Engineer student who specializes in System Development
+            </p>
             <p className="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200 pb-4">
-              A graduating Computer Engineer student who specializes in System Development with practical experience in Front-End and Back-End Web Development.
+              with practical experience in Front-End and Back-End Web Development.
             </p>
             <button
               onClick={() => scrollToSection('about')}
