@@ -13,18 +13,18 @@ const App = () => {
 
   // Refs for Projects carousel automatic scrolling
   const projectScrollIntervalRef = useRef(null);
-  const projectScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
-  const projectScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.e., on manual scroll)
+  const projectScrollDirectionRef = useRef('forward');
+  const projectScrollPausedRef = useRef(false);
 
   // Refs for Certifications carousel automatic scrolling
   const certScrollIntervalRef = useRef(null);
-  const certScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
-  const certScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
+  const certScrollDirectionRef = useRef('forward');
+  const certScrollPausedRef = useRef(false);
 
   // Refs for Other Work Experience carousel automatic scrolling
   const otherWorkScrollIntervalRef = useRef(null);
-  const otherWorkScrollDirectionRef = useRef('forward'); // 'forward' or 'backward'
-  const otherWorkScrollPausedRef = useRef(false); // To temporarily pause auto-scroll (e.g., on manual scroll)
+  const otherWorkScrollDirectionRef = useRef('forward');
+  const otherWorkScrollPausedRef = useRef(false);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -57,180 +57,10 @@ const App = () => {
       }
     };
 
-    updateHeight(); // Initial run
-    window.addEventListener('resize', updateHeight); // Update on window resize
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
     return () => window.removeEventListener('resize', updateHeight);
   }, []);
-
-  // --- Certifications Carousel Logic ---
-  const startCertAutomaticScrolling = () => {
-    const container = certificationsContainerRef.current;
-    if (!container || certScrollPausedRef.current) return;
-
-    const scrollSpeed = 1; // Speed of the scroll
-    const intervalTime = 20; // Interval for updating scroll position
-    const card = container.querySelector('[data-cert-card]');
-    const cardWidth = card?.offsetWidth || 300; // Default width if card not found
-    const gap = 24; // Gap between cards
-    const maxScrollLeft = container.scrollWidth - container.clientWidth; // Max scrollable distance
-
-    // Clear any existing interval to prevent multiple intervals running
-    if (certScrollIntervalRef.current) {
-      clearInterval(certScrollIntervalRef.current);
-    }
-
-    certScrollIntervalRef.current = setInterval(() => {
-      if (!container) return; // Exit if container is no longer available
-
-      if (certScrollDirectionRef.current === 'forward') {
-        container.scrollLeft += scrollSpeed;
-
-        // If scrolled to the end, reverse direction and set a pause
-        if (container.scrollLeft >= maxScrollLeft) {
-          clearInterval(certScrollIntervalRef.current); // Stop current interval
-          certScrollIntervalRef.current = null;
-          certScrollPausedRef.current = true; // Pause auto-scroll
-
-          // After a delay, reverse direction and restart auto-scroll
-          setTimeout(() => {
-            certScrollDirectionRef.current = 'backward';
-            certScrollPausedRef.current = false;
-            startCertAutomaticScrolling();
-          }, 5000); // 5 seconds pause
-        }
-
-      } else { // Scrolling backward
-        container.scrollLeft -= scrollSpeed;
-
-        // If scrolled to the beginning, reverse direction and set a pause
-        if (container.scrollLeft <= 0) {
-          clearInterval(certScrollIntervalRef.current); // Stop current interval
-          certScrollIntervalRef.current = null;
-          certScrollPausedRef.current = true; // Pause auto-scroll
-
-          // After a delay, reverse direction and restart auto-scroll
-          setTimeout(() => {
-            certScrollDirectionRef.current = 'forward';
-            certScrollPausedRef.current = false;
-            startCertAutomaticScrolling();
-          }, 5000); // 5 seconds pause
-        }
-      }
-    }, intervalTime);
-  };
-
-  const stopCertAutomaticScrolling = () => {
-    if (certScrollIntervalRef.current) {
-      clearInterval(certScrollIntervalRef.current);
-      certScrollIntervalRef.current = null;
-    }
-  };
-
-  let certResumeScrollTimeout = null;
-  const pauseCertAutoScrollTemporarily = () => {
-    stopCertAutomaticScrolling();
-    if (certResumeScrollTimeout) {
-      clearTimeout(certResumeScrollTimeout);
-    }
-    certResumeScrollTimeout = setTimeout(() => {
-      startCertAutomaticScrolling();
-    }, 5000);
-  };
-
-  const scrollCertificationsLeft = () => {
-    const container = certificationsContainerRef.current;
-    if (!container) return;
-
-    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
-
-    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
-    if (cards.length === 0) return;
-
-    const isMobile = window.innerWidth < 768;
-
-    let targetScrollLeft = 0;
-    let foundTarget = false;
-
-    // Find the first card that is currently mostly visible on the left side of the container
-    // and scroll to the beginning of the previous card
-    for (let i = 0; i < cards.length; i++) {
-        const card = cards[i];
-        // If the card is currently visible or just past the left edge
-        if (card.offsetLeft >= container.scrollLeft - (card.offsetWidth / 2) && card.offsetLeft < container.scrollLeft + container.clientWidth) {
-            // If it's the first card, snap to 0
-            if (i === 0) {
-                targetScrollLeft = 0;
-            } else {
-                // Otherwise, scroll to the previous card's offsetLeft
-                targetScrollLeft = cards[i - 1].offsetLeft;
-            }
-            foundTarget = true;
-            break;
-        }
-    }
-
-    if (!foundTarget && container.scrollLeft > 0) {
-        // If no specific card found (e.g., in between cards), snap to the very beginning
-        targetScrollLeft = 0;
-        foundTarget = true;
-    }
-
-    if (foundTarget) {
-        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
-    } else if (container.scrollLeft === 0) {
-        // Already at the beginning, do nothing
-        return;
-    }
-  };
-
-  const scrollCertificationsRight = () => {
-    const container = certificationsContainerRef.current;
-    if (!container) return;
-
-    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
-
-    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
-    if (cards.length === 0) return;
-
-    const isMobile = window.innerWidth < 768;
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-    let targetScrollLeft = maxScrollLeft;
-    let foundTarget = false;
-
-    // Find the first card that is currently mostly visible on the right side of the container
-    // and scroll to the beginning of the next card
-    for (let i = 0; i < cards.length; i++) {
-        const card = cards[i];
-        // If the card's right edge is past the current scroll position,
-        // meaning it's either fully visible, or partially visible on the right.
-        if (card.offsetLeft + card.offsetWidth > container.scrollLeft + container.clientWidth / 2) {
-            // If it's the last card, snap to maxScrollLeft
-            if (i === cards.length - 1) {
-                targetScrollLeft = maxScrollLeft;
-            } else {
-                // Otherwise, scroll to the next card's offsetLeft
-                targetScrollLeft = cards[i + 1].offsetLeft;
-            }
-            foundTarget = true;
-            break;
-        }
-    }
-
-    if (!foundTarget && container.scrollLeft < maxScrollLeft) {
-        // If no specific card found (e.g., in between cards), snap to the very end
-        targetScrollLeft = maxScrollLeft;
-        foundTarget = true;
-    }
-
-    if (foundTarget) {
-        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
-    } else if (container.scrollLeft >= maxScrollLeft) {
-        // Already at the end, do nothing
-        return;
-    }
-  };
-
 
   // --- Projects Carousel Logic ---
   const startProjectAutomaticScrolling = () => {
@@ -576,32 +406,168 @@ const App = () => {
     }
   };
 
-  // Effect for Certifications Carousel
-  useEffect(() => {
+  // --- Certifications Carousel Logic ---
+  const startCertAutomaticScrolling = () => {
+    const container = certificationsContainerRef.current;
+    if (!container || certScrollPausedRef.current) return;
+
+    const scrollSpeed = 1; // Speed of the scroll
+    const intervalTime = 20; // Interval for updating scroll position
+    const card = container.querySelector('[data-cert-card]');
+    const cardWidth = card?.offsetWidth || 300; // Default width if card not found
+    const gap = 24; // Gap between cards
+    const maxScrollLeft = container.scrollWidth - container.clientWidth; // Max scrollable distance
+
+    // Clear any existing interval to prevent multiple intervals running
+    if (certScrollIntervalRef.current) {
+      clearInterval(certScrollIntervalRef.current);
+    }
+
+    certScrollIntervalRef.current = setInterval(() => {
+      if (!container) return; // Exit if container is no longer available
+
+      if (certScrollDirectionRef.current === 'forward') {
+        container.scrollLeft += scrollSpeed;
+
+        // If scrolled to the end, reverse direction and set a pause
+        if (container.scrollLeft >= maxScrollLeft) {
+          clearInterval(certScrollIntervalRef.current); // Stop current interval
+          certScrollIntervalRef.current = null;
+          certScrollPausedRef.current = true; // Pause auto-scroll
+
+          // After a delay, reverse direction and restart auto-scroll
+          setTimeout(() => {
+            certScrollDirectionRef.current = 'backward';
+            certScrollPausedRef.current = false;
+            startCertAutomaticScrolling();
+          }, 5000); // 5 seconds pause
+        }
+
+      } else { // Scrolling backward
+        container.scrollLeft -= scrollSpeed;
+
+        // If scrolled to the beginning, reverse direction and set a pause
+        if (container.scrollLeft <= 0) {
+          clearInterval(certScrollIntervalRef.current); // Stop current interval
+          certScrollIntervalRef.current = null;
+          certScrollPausedRef.current = true; // Pause auto-scroll
+
+          // After a delay, reverse direction and restart auto-scroll
+          setTimeout(() => {
+            certScrollDirectionRef.current = 'forward';
+            certScrollPausedRef.current = false;
+            startCertAutomaticScrolling();
+          }, 5000); // 5 seconds pause
+        }
+      }
+    }, intervalTime);
+  };
+
+  const stopCertAutomaticScrolling = () => {
+    if (certScrollIntervalRef.current) {
+      clearInterval(certScrollIntervalRef.current);
+      certScrollIntervalRef.current = null;
+    }
+  };
+
+  let certResumeScrollTimeout = null;
+  const pauseCertAutoScrollTemporarily = () => {
+    stopCertAutomaticScrolling();
+    if (certResumeScrollTimeout) {
+      clearTimeout(certResumeScrollTimeout);
+    }
+    certResumeScrollTimeout = setTimeout(() => {
+      startCertAutomaticScrolling();
+    }, 5000);
+  };
+
+  const scrollCertificationsLeft = () => {
     const container = certificationsContainerRef.current;
     if (!container) return;
 
-    startCertAutomaticScrolling(); // Start automatic scrolling
+    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
 
-    // Event listeners for dragging
-    const mouseDownCert = (e) => handleMouseDown(e, certificationsContainerRef, startCertAutomaticScrolling, stopCertAutomaticScrolling);
-    const mouseLeaveCert = () => handleMouseLeave(certificationsContainerRef, startCertAutomaticScrolling);
-    const mouseUpCert = () => handleMouseUp(certificationsContainerRef, startCertAutomaticScrolling);
-    const mouseMoveCert = (e) => handleMouseMove(e, certificationsContainerRef);
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
+    if (cards.length === 0) return;
 
-    container.addEventListener('mousedown', mouseDownCert);
-    container.addEventListener('mouseleave', mouseLeaveCert);
-    container.addEventListener('mouseup', mouseUpCert);
-    container.addEventListener('mousemove', mouseMoveCert);
+    const isMobile = window.innerWidth < 768;
 
-    return () => {
-      stopCertAutomaticScrolling(); // Cleanup on unmount
-      container.removeEventListener('mousedown', mouseDownCert);
-      container.removeEventListener('mouseleave', mouseLeaveCert);
-      container.removeEventListener('mouseup', mouseUpCert);
-      container.removeEventListener('mousemove', mouseMoveCert);
-    };
-  }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state for consistent behavior
+    let targetScrollLeft = 0;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        // If the card is currently visible or just past the left edge
+        if (card.offsetLeft >= container.scrollLeft - (card.offsetWidth / 2) && card.offsetLeft < container.scrollLeft + container.clientWidth) {
+            // If it's the first card, snap to 0
+            if (i === 0) {
+                targetScrollLeft = 0;
+            } else {
+                // Otherwise, scroll to the previous card's offsetLeft
+                targetScrollLeft = cards[i - 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft > 0) {
+        // If no specific card found (e.g., in between cards), snap to the very beginning
+        targetScrollLeft = 0;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft === 0) {
+        // Already at the beginning, do nothing
+        return;
+    }
+  };
+
+  const scrollCertificationsRight = () => {
+    const container = certificationsContainerRef.current;
+    if (!container) return;
+
+    pauseCertAutoScrollTemporarily(); // Pause auto-scroll briefly on manual interaction
+
+    const cards = Array.from(container.children).filter(child => child.hasAttribute('data-cert-card'));
+    if (cards.length === 0) return;
+
+    const isMobile = window.innerWidth < 768;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    let targetScrollLeft = maxScrollLeft;
+    let foundTarget = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.offsetLeft + card.offsetWidth > container.scrollLeft + container.clientWidth / 2) {
+            // If it's the last card, snap to maxScrollLeft
+            if (i === cards.length - 1) {
+                targetScrollLeft = maxScrollLeft;
+            } else {
+                // Otherwise, scroll to the next card's offsetLeft
+                targetScrollLeft = cards[i + 1].offsetLeft;
+            }
+            foundTarget = true;
+            break;
+        }
+    }
+
+    if (!foundTarget && container.scrollLeft < maxScrollLeft) {
+        // If no specific card found (e.g., in between cards), snap to the very end
+        targetScrollLeft = maxScrollLeft;
+        foundTarget = true;
+    }
+
+    if (foundTarget) {
+        container.scrollTo({ left: targetScrollLeft, behavior: isMobile ? 'auto' : 'smooth' });
+    } else if (container.scrollLeft >= maxScrollLeft) {
+        // Already at the end, do nothing
+        return;
+    }
+  };
 
   // Effect for Projects Carousel
   useEffect(() => {
@@ -657,6 +623,32 @@ const App = () => {
     };
   }, [isDragging, startX, scrollLeftStart]);
 
+  // Effect for Certifications Carousel
+  useEffect(() => {
+    const container = certificationsContainerRef.current;
+    if (!container) return;
+
+    startCertAutomaticScrolling(); // Start automatic scrolling
+
+    // Event listeners for dragging
+    const mouseDownCert = (e) => handleMouseDown(e, certificationsContainerRef, startCertAutomaticScrolling, stopCertAutomaticScrolling);
+    const mouseLeaveCert = () => handleMouseLeave(certificationsContainerRef, startCertAutomaticScrolling);
+    const mouseUpCert = () => handleMouseUp(certificationsContainerRef, startCertAutomaticScrolling);
+    const mouseMoveCert = (e) => handleMouseMove(e, certificationsContainerRef);
+
+    container.addEventListener('mousedown', mouseDownCert);
+    container.addEventListener('mouseleave', mouseLeaveCert);
+    container.addEventListener('mouseup', mouseUpCert);
+    container.addEventListener('mousemove', mouseMoveCert);
+
+    return () => {
+      stopCertAutomaticScrolling(); // Cleanup on unmount
+      container.removeEventListener('mousedown', mouseDownCert);
+      container.removeEventListener('mouseleave', mouseLeaveCert);
+      container.removeEventListener('mouseup', mouseUpCert);
+      container.removeEventListener('mousemove', mouseMoveCert);
+    };
+  }, [isDragging, startX, scrollLeftStart]); // Depend on dragging state for consistent behavior
 
   const skills = {
     'Web Development': ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
